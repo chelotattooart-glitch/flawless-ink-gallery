@@ -1,4 +1,8 @@
-Flawless Ink Gallery — primera versión.
+Flawless Ink Gallery — V3 MAX
 
-Sube index.html, style.css, script.js y la carpeta assets a la raíz del repositorio de GitHub.
-Luego podremos publicarlo y conectar flawlessinkgallery.com.
+Versión de alto impacto: animaciones cinematográficas, marquee, barra de progreso,
+movimiento de tipografía durante scroll, glow ambiental, microinteracciones y
+experiencia móvil reforzada.
+
+Sube TODO el contenido de esta carpeta al mismo repositorio de GitHub y confirma
+el reemplazo de index.html, style.css y script.js. Conserva la carpeta assets.
