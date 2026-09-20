@@ -11,3 +11,17 @@ document.querySelectorAll('.tile').forEach(btn=>{
 });
 dialog.querySelector('.close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{ if(e.target===dialog) dialog.close(); });
+
+
+// V2 motion
+const nav = document.querySelector('.nav');
+const heroImg = document.querySelector('.hero-media img');
+const onScroll = () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 35);
+  if (heroImg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    heroImg.style.transform = `scale(${1.04 + Math.min(y,700)/18000}) translate3d(0,${Math.min(y,700)*.045}px,0)`;
+  }
+};
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
