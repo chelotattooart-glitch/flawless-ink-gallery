@@ -17,39 +17,3 @@ dialog{border:0;padding:0;background:#000c;max-width:none;max-height:none;width:
 @keyframes drift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.09) translate3d(-1%,1%,0)}}
 @media(max-width:760px){.nav{padding:18px 20px}.brand{font-size:11px}.nav nav a:not(.book){display:none}.hero-copy{padding:0 22px 13vh}.hero-shade{background:linear-gradient(0deg,#050706 3%,#05070670 60%,#05070655)}.scroll{display:none}.statement{padding:12vh 22px}.studio{grid-template-columns:1fr}.studio-photo{min-height:62vh}.studio-copy{padding:70px 24px}.artist{grid-template-columns:1fr;padding:90px 20px;gap:45px}.artist-copy{position:static}.artist-grid{gap:8px}.artist-grid img:first-child{height:480px}.artist-grid img:last-child{height:360px;margin-top:70px}.portfolio{padding:70px 10px 100px}.section-head{padding:0 12px;display:block}.section-head>p{display:none}.gallery{columns:2 150px;column-gap:8px}.tile{height:280px;margin-bottom:8px}.tile.tall{height:420px}.contact{padding:110px 22px}footer{gap:20px;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.hero-media img{animation:none}.reveal{opacity:1;transform:none;transition:none}}
-
-
-/* V2 — more dynamic, mobile-first motion */
-body{overflow-x:hidden}
-.nav{transition:background .35s ease,transform .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
-.nav.scrolled{background:#050706e8;border-color:var(--line);backdrop-filter:blur(16px)}
-.hero-copy .eyebrow,.hero-copy h1,.hero-copy .lead,.hero-copy .cta{animation:heroUp .9s both cubic-bezier(.16,1,.3,1)}
-.hero-copy h1{animation-delay:.08s}.hero-copy .lead{animation-delay:.18s}.hero-copy .cta{animation-delay:.28s}
-@keyframes heroUp{from{opacity:0;transform:translateY(45px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
-.statement{position:relative;overflow:hidden}
-.statement:after{content:"FLAWLESS";position:absolute;right:-2vw;bottom:-.28em;font:600 clamp(90px,20vw,300px)/1 "Playfair Display",serif;color:#ffffff035;letter-spacing:-.07em;pointer-events:none}
-.studio-photo,.artist-grid img,.tile{border-radius:2px}
-.studio-photo,.artist-grid{overflow:hidden}
-.studio-photo img{transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
-.studio:hover .studio-photo img{transform:scale(1.035)}
-.tile{position:relative;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s}
-.tile:after{content:"VIEW";position:absolute;inset:auto 16px 16px auto;background:#050706c9;border:1px solid #ffffff35;color:white;border-radius:999px;padding:9px 12px;font:700 9px/1 Manrope;letter-spacing:.18em;opacity:0;transform:translateY(8px);transition:.35s}
-.tile:hover{transform:translateY(-7px);box-shadow:0 22px 60px #0008}.tile:hover:after{opacity:1;transform:none}
-.cta{position:relative;overflow:hidden;transition:transform .3s ease,color .3s ease,box-shadow .3s ease}
-.cta:before{content:"";position:absolute;inset:0;background:var(--aqua);transform:translateX(-105%);transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:-1}
-.cta:hover{color:#02100e;transform:translateY(-2px)}.cta:hover:before{transform:none}
-.reveal{opacity:0;transform:translateY(54px) scale(.985);filter:blur(5px);transition:opacity .9s ease,transform 1s cubic-bezier(.16,1,.3,1),filter .9s ease}
-.reveal.in{opacity:1;transform:none;filter:none}
-.gallery .reveal:nth-child(3n+2){transition-delay:.08s}.gallery .reveal:nth-child(3n+3){transition-delay:.16s}
-@media(max-width:760px){
-  .hero h1{font-size:clamp(54px,18vw,86px)}
-  .hero-copy{padding-bottom:10vh}
-  .statement h2,.studio h2,.artist h2,.section-head h2,.contact h2{letter-spacing:-.035em}
-  .statement{padding-top:15vh;padding-bottom:15vh}
-  .studio-photo{min-height:72vh}
-  .artist-grid{grid-template-columns:1fr 1fr;transform:rotate(-1.5deg);margin-inline:-8px}
-  .artist-grid img:first-child{height:440px}.artist-grid img:last-child{height:330px;margin-top:55px}
-  .gallery{column-gap:7px}.tile{margin-bottom:7px}
-  .tile:after{opacity:1;transform:none;font-size:7px;padding:7px 9px;right:9px;bottom:9px}
-  .contact{min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
-}
