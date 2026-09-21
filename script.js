@@ -42,41 +42,33 @@ if (heroSlides.length > 1) {
 }
 
 
-// Open only the portfolio that belongs to the clicked artist.
-const portfolioSections = [...document.querySelectorAll('.artist-portfolio')];
-const portfolioTriggers = [...document.querySelectorAll('[data-open-portfolio]')];
-
-const adrianDialog = document.getElementById('adrian-portfolio-dialog');
-adrianDialog.querySelector('.adrian-dialog-close').addEventListener('click', () => adrianDialog.close());
-adrianDialog.addEventListener('click', event => {
-  if (event.target !== adrianDialog) return;
-  const bounds = adrianDialog.getBoundingClientRect();
-  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) adrianDialog.close();
-});
-adrianDialog.addEventListener('close', () => document.body.classList.remove('adrian-dialog-open'));
-
-function openArtistPortfolio(name) {
-  if (name === 'adrian') {
-    portfolioSections.forEach(section => section.classList.remove('portfolio-open'));
-    if (!adrianDialog.open) adrianDialog.showModal();
-    document.body.classList.add('adrian-dialog-open');
-    return;
-  }
-  const target = document.querySelector(`#portfolio-${name}`);
-  if (!target) return;
-
-  portfolioSections.forEach(section => section.classList.remove('portfolio-open'));
-  target.classList.add('portfolio-open', 'in');
-
-  requestAnimationFrame(() => {
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+// Every artist opens the same accessible portfolio layout.
+const artistDialogs = [...document.querySelectorAll('.artist-portfolio-dialog')];
+function syncArtistScrollLock() {
+  document.body.classList.toggle('artist-dialog-open', artistDialogs.some(dialog => dialog.open));
 }
-
-portfolioTriggers.forEach(trigger => {
+function openArtistPortfolio(name) {
+  const target = document.getElementById('portfolio-' + name);
+  if (!target || !target.classList.contains('artist-portfolio-dialog')) return;
+  artistDialogs.forEach(dialog => { if (dialog !== target && dialog.open) dialog.close(); });
+  if (!target.open) target.showModal();
+  target.scrollTop = 0;
+  syncArtistScrollLock();
+}
+artistDialogs.forEach(dialog => {
+  dialog.querySelector('.artist-dialog-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', syncArtistScrollLock);
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  });
+});
+document.querySelectorAll('[data-open-portfolio]').forEach(trigger => {
+  trigger.setAttribute('aria-haspopup', 'dialog');
+  trigger.setAttribute('aria-controls', 'portfolio-' + trigger.dataset.openPortfolio);
   trigger.addEventListener('click', event => {
     event.preventDefault();
     openArtistPortfolio(trigger.dataset.openPortfolio);
   });
 });
-

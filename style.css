@@ -604,14 +604,25 @@ body{overflow-x:hidden}
 /* Adrian portrait in the portfolio panel */
 .adrian-portrait{display:block;width:min(100%,360px);height:auto;margin:0 auto 28px;border-radius:12px;}
 
-/* Adrian's portrait portfolio popup. */
-#adrian-portfolio-dialog{width:min(880px,calc(100vw - 28px));height:auto;max-height:90vh;max-height:90dvh;margin:auto;padding:0;overflow:auto;border:1px solid #35ead744;border-radius:18px;background:#0b0e0d;color:#f3f0e9;box-shadow:0 24px 90px #000a;}
-#adrian-portfolio-dialog::backdrop{background:#000d;backdrop-filter:blur(5px);}
-.adrian-dialog-content{position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;}
-#adrian-portfolio-dialog .adrian-dialog-photo{display:block;width:100%;height:auto;max-height:85vh;object-fit:contain;padding:0;}
-.adrian-dialog-copy{padding:32px;}
-.adrian-dialog-copy h2{font-family:"Playfair Display",serif;font-size:clamp(38px,6vw,64px);margin:12px 0;}
-.adrian-coming-soon{color:var(--muted);line-height:1.6;}
-.adrian-dialog-close{position:absolute;right:12px;top:12px;z-index:2;width:44px;height:44px;border:1px solid #ffffff77;border-radius:50%;background:#111e;color:white;font-size:28px;cursor:pointer;}
-body.adrian-dialog-open{overflow:hidden;}
-@media(max-width:600px){.adrian-dialog-content{grid-template-columns:1fr;}#adrian-portfolio-dialog .adrian-dialog-photo{max-height:58dvh;}.adrian-dialog-copy{padding:20px 24px;}.adrian-dialog-copy h2{margin:6px 0;}}
+
+/* Shared artist portfolios: portraits, biographies, and photo galleries. */
+.artist-portfolio-dialog{width:min(1040px,calc(100vw - 28px));height:auto;max-height:92vh;max-height:92dvh;margin:auto;padding:0;overflow:auto;overscroll-behavior:contain;border:1px solid #35ead744;border-radius:18px;background:#0b0e0d;color:#f3f0e9;box-shadow:0 24px 90px #000a;}
+.artist-portfolio-dialog::backdrop{background:#000d;backdrop-filter:blur(5px);}
+.artist-dialog-toolbar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:#0b0e0df5;border-bottom:1px solid var(--line);}
+.artist-dialog-toolbar>span{font-size:10px;letter-spacing:.18em;color:var(--aqua);}
+.artist-dialog-close{flex-shrink:0;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;background:#111;color:white;font-size:28px;cursor:pointer;}
+.artist-dialog-close:focus-visible,.artist-dialog-gallery .tile:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;}
+.artist-dialog-body{padding:30px;}
+.artist-dialog-header{display:grid;grid-template-columns:minmax(160px,280px) 1fr;gap:32px;align-items:center;}
+.artist-portfolio-dialog .artist-dialog-portrait{display:block;width:100%;height:auto;max-height:390px;object-fit:contain;padding:0;border-radius:12px;}
+.artist-dialog-initial{display:grid;place-items:center;aspect-ratio:1;border-radius:12px;background:radial-gradient(circle,#12473f,#080b0a);font-size:80px;color:var(--aqua);}
+.artist-dialog-header h2{font-family:"Playfair Display",serif;font-size:clamp(40px,6vw,76px);line-height:1.1;margin:12px 0;}
+.artist-dialog-role,.artist-content-pending,.artist-gallery-hint{color:var(--muted);line-height:1.7;}
+.artist-dialog-about,.artist-dialog-work{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);}
+.artist-dialog-body h3{font-size:22px;margin:0 0 16px;}
+.artist-dialog-about p{max-width:800px;line-height:1.8;}
+.artist-dialog-gallery{columns:3;column-gap:12px;}
+.artist-dialog-gallery .tile,.artist-dialog-gallery .tile.tall{display:block;height:auto;min-height:0;margin:0 0 12px;border-radius:8px;overflow:hidden;}
+.artist-portfolio-dialog .artist-dialog-gallery img{display:block;width:100%;height:auto;object-fit:contain;padding:0;}
+body.artist-dialog-open{overflow:hidden;}
+@media(max-width:650px){.artist-dialog-toolbar{padding:10px 16px;}.artist-dialog-body{padding:20px;}.artist-dialog-header{grid-template-columns:1fr;gap:20px;}.artist-portfolio-dialog .artist-dialog-portrait{max-height:45dvh;}.artist-dialog-initial{width:130px;font-size:56px;}.artist-dialog-gallery{columns:2;column-gap:8px;}.artist-dialog-gallery .tile{margin-bottom:8px;}}
