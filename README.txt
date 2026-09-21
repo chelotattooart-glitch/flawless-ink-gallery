@@ -43,3 +43,15 @@ Individual artist portfolios:
 - Marcelo's existing tattoo gallery is now labeled as Marcelo's portfolio.
 - Adrian, Jmike, Sergio, Sammi, Kimmi and TJ each have their own portfolio section
   ready for photos later.
+
+
+Marcelo bio update:
+- Marcelo's full artist description now appears directly under his portfolio heading.
+- It is styled as a refined biography panel before his tattoo gallery.
+
+
+Portfolio interaction update:
+- All artist portfolios are hidden by default.
+- A portfolio appears only after clicking that artist's photo or View Portfolio link.
+- Only one artist portfolio is shown at a time.
+- Each portfolio includes a Close button that returns to the artist section.

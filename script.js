@@ -40,3 +40,35 @@ if (heroSlides.length > 1) {
     heroSlides[currentHeroSlide].classList.add('active');
   }, slideInterval);
 }
+
+
+// Open only the portfolio that belongs to the clicked artist.
+const portfolioSections = [...document.querySelectorAll('.artist-portfolio')];
+const portfolioTriggers = [...document.querySelectorAll('[data-open-portfolio]')];
+
+function openArtistPortfolio(name) {
+  const target = document.querySelector(`#portfolio-${name}`);
+  if (!target) return;
+
+  portfolioSections.forEach(section => section.classList.remove('portfolio-open'));
+  target.classList.add('portfolio-open');
+
+  requestAnimationFrame(() => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+portfolioTriggers.forEach(trigger => {
+  trigger.addEventListener('click', event => {
+    event.preventDefault();
+    openArtistPortfolio(trigger.dataset.openPortfolio);
+  });
+});
+
+document.querySelectorAll('.portfolio-close').forEach(button => {
+  button.addEventListener('click', () => {
+    const section = button.closest('.artist-portfolio');
+    if (section) section.classList.remove('portfolio-open');
+    document.querySelector('#artist')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
