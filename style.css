@@ -600,3 +600,6 @@ body{overflow-x:hidden}
   border-bottom:1px solid #35ead766;
   padding-bottom:3px;
 }
+
+/* Adrian portrait in the portfolio panel */
+.adrian-portrait{display:block;width:min(100%,360px);height:auto;margin:0 auto 28px;border-radius:12px;}
