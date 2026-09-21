@@ -641,3 +641,8 @@ body.artist-dialog-open{overflow:hidden;}
 .sammi-dialog-photo-frame{position:relative;width:100%;max-width:280px;aspect-ratio:1;overflow:hidden;border-radius:12px;background:#0b0e0d;}
 .artist-portfolio-dialog .sammi-dialog-photo-frame img{position:absolute;display:block;width:170%;max-width:none;height:auto;max-height:none;left:-70%;top:-42%;object-fit:initial;padding:0;}
 @media(max-width:650px){.sammi-dialog-photo-frame{max-width:280px;margin-inline:auto;}}
+
+/* Samantha's biography specialties. */
+#portfolio-sammi .artist-dialog-about h4{margin:24px 0 12px;color:var(--aqua);font-size:16px;}
+.sammi-specialties{padding-left:22px;margin:0 0 24px;line-height:1.9;}
+.sammi-specialties li::marker{color:var(--aqua);}
