@@ -632,3 +632,7 @@ body.artist-dialog-open{overflow:hidden;}
 .artist-instagram-link:hover{background:#35ead71c;border-color:var(--aqua);}
 .artist-instagram-link:focus-visible{outline:2px solid var(--aqua);outline-offset:4px;}
 .artist-profile-info>.artist-instagram-link{font-size:10px;margin-top:12px;}
+
+/* Frame Sammi's face and upper torso, with hands outside the portrait. */
+.artist-photo-frame.sammi-photo-frame{position:relative;}
+.artist-photo-frame.sammi-photo-frame img{position:absolute;display:block;width:170%;max-width:none;height:auto;left:-70%;top:-42%;object-fit:initial;transform-origin:72% 40%;}
