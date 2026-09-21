@@ -36,3 +36,10 @@ Artist portrait update:
 - Artist photos are now small circular portraits above each name.
 - Cards are compact so more artists are visible at once.
 - Placeholder circles are ready for future artist headshots.
+
+
+Individual artist portfolios:
+- Clicking each artist's circular photo now jumps to that artist's portfolio.
+- Marcelo's existing tattoo gallery is now labeled as Marcelo's portfolio.
+- Adrian, Jmike, Sergio, Sammi, Kimmi and TJ each have their own portfolio section
+  ready for photos later.

@@ -391,3 +391,85 @@ body{overflow-x:hidden}
     font-size:24px;
   }
 }
+
+
+/* Artist portrait links + individual portfolio sections */
+.artist-photo-link{
+  display:block;
+  width:max-content;
+  margin:0 auto;
+  border-radius:50%;
+  position:relative;
+}
+.artist-photo-link:after{
+  content:"VIEW";
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.9);
+  opacity:0;
+  z-index:5;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#050706d9;
+  border:1px solid #35ead777;
+  color:var(--aqua);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.16em;
+  transition:.28s ease;
+  pointer-events:none;
+}
+.artist-photo-link:hover:after{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+.artist-photo-link:hover .artist-photo-frame{
+  border-color:var(--aqua);
+  box-shadow:0 0 0 6px #35ead70e, 0 0 34px #35ead72a;
+}
+.artist-portfolio{
+  scroll-margin-top:90px;
+}
+.portfolio-coming{
+  min-height:52vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-top:1px solid var(--line);
+  background:
+    radial-gradient(circle at 50% 30%,#0a2c28 0%,transparent 35%),
+    #050706;
+}
+.portfolio-placeholder{
+  text-align:center;
+  max-width:700px;
+  padding:9vh 24px;
+}
+.portfolio-placeholder h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(48px,7vw,92px);
+  line-height:.95;
+  margin:.2em 0;
+}
+.portfolio-placeholder>p:not(.eyebrow){
+  color:var(--muted);
+  font-size:16px;
+  margin-bottom:26px;
+}
+@media(max-width:760px){
+  .artist-photo-link:after{
+    opacity:1;
+    top:auto;
+    bottom:-2px;
+    transform:translate(-50%,0);
+    font-size:7px;
+    padding:6px 8px;
+  }
+  .artist-photo-link:hover:after{
+    transform:translate(-50%,0);
+  }
+  .artist-portfolio{
+    scroll-margin-top:72px;
+  }
+}
