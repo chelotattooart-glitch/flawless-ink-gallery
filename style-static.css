@@ -126,47 +126,6 @@ body{overflow-x:hidden}
 }
 
 
-/* Slow cinematic homepage background slideshow */
-.hero-media{position:absolute;inset:0;overflow:hidden;background:#050706}
-.hero-media .hero-slide{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  opacity:0;
-  transform:scale(1.035);
-  transition:opacity 2.6s ease-in-out, transform 11s ease;
-  will-change:opacity,transform;
-}
-.hero-media .hero-slide.active{
-  opacity:1;
-  transform:scale(1.10);
-}
-.hero-media .hero-slide:nth-child(1){object-position:center 42%}
-.hero-media .hero-slide:nth-child(2){object-position:center center}
-.hero-media .hero-slide:nth-child(3),
-.hero-media .hero-slide:nth-child(4){object-position:center 35%}
-.hero-shade{
-  background:
-    linear-gradient(90deg,#050706e9 0%,#0507068a 45%,#0507063f 72%,#05070659 100%),
-    linear-gradient(0deg,#050706 0%,transparent 48%);
-}
-@media(max-width:760px){
-  .hero-media .hero-slide{transition:opacity 2.2s ease-in-out,transform 10s ease}
-  .hero-media .hero-slide.active{transform:scale(1.08)}
-  .hero-shade{
-    background:
-      linear-gradient(0deg,#050706f2 0%,#05070688 55%,#0507064f 100%),
-      linear-gradient(90deg,#05070662,transparent);
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .hero-media .hero-slide{transition:opacity .4s linear;transform:none!important}
-}
-
-
 /* Artist horizontal row — photo on top, name below */
 .artist-strip-section{
   display:block;
@@ -615,49 +574,6 @@ body{overflow-x:hidden}
 }
 
 
-/* Re-enabled slow cinematic homepage slideshow */
-.hero-media{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  background:#050706;
-}
-.hero-media > img.hero-slide{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  opacity:0!important;
-  transform:scale(1.035)!important;
-  transition:opacity 2.6s ease-in-out, transform 11s ease!important;
-  animation:none!important;
-  will-change:opacity,transform;
-}
-.hero-media > img.hero-slide.active{
-  opacity:1!important;
-  transform:scale(1.10)!important;
-}
-.hero-media > img.hero-slide:nth-child(1){object-position:center 42%!important}
-.hero-media > img.hero-slide:nth-child(2){object-position:center center!important}
-.hero-media > img.hero-slide:nth-child(3),
-.hero-media > img.hero-slide:nth-child(4){object-position:center 35%!important}
-@media(max-width:760px){
-  .hero-media > img.hero-slide{
-    transition:opacity 2.2s ease-in-out,transform 10s ease!important;
-  }
-  .hero-media > img.hero-slide.active{
-    transform:scale(1.08)!important;
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .hero-media > img.hero-slide{
-    transition:opacity .4s linear!important;
-    transform:none!important;
-  }
-}
-
-
 /* Final: static homepage background only */
 .hero-media > img{
   position:absolute!important;
@@ -670,4 +586,53 @@ body{overflow-x:hidden}
   transform:scale(1.04)!important;
   transition:none!important;
   animation:none!important;
+}
+
+
+/* HARD RESET: one permanent homepage background image only */
+.hero-media{
+  position:absolute!important;
+  inset:0!important;
+  overflow:hidden!important;
+  background:#050706!important;
+}
+.hero-media .hero-static-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 42%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  display:block!important;
+  transform:scale(1.04)!important;
+  transition:none!important;
+  animation:none!important;
+}
+.hero-media .hero-slide{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+}
+
+
+/* Gentle motion on the static homepage image */
+.hero-media .hero-static-image{
+  animation: heroDrift 16s ease-in-out infinite alternate !important;
+  will-change: transform;
+}
+@keyframes heroDrift{
+  0%{
+    transform: scale(1.04) translate3d(0,0,0) !important;
+  }
+  100%{
+    transform: scale(1.09) translate3d(-1.2%, 1.2%, 0) !important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-media .hero-static-image{
+    animation: none !important;
+    transform: scale(1.04) !important;
+  }
 }
