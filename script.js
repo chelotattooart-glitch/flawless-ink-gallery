@@ -46,12 +46,27 @@ if (heroSlides.length > 1) {
 const portfolioSections = [...document.querySelectorAll('.artist-portfolio')];
 const portfolioTriggers = [...document.querySelectorAll('[data-open-portfolio]')];
 
+const adrianDialog = document.getElementById('adrian-portfolio-dialog');
+adrianDialog.querySelector('.adrian-dialog-close').addEventListener('click', () => adrianDialog.close());
+adrianDialog.addEventListener('click', event => {
+  if (event.target !== adrianDialog) return;
+  const bounds = adrianDialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) adrianDialog.close();
+});
+adrianDialog.addEventListener('close', () => document.body.classList.remove('adrian-dialog-open'));
+
 function openArtistPortfolio(name) {
+  if (name === 'adrian') {
+    portfolioSections.forEach(section => section.classList.remove('portfolio-open'));
+    if (!adrianDialog.open) adrianDialog.showModal();
+    document.body.classList.add('adrian-dialog-open');
+    return;
+  }
   const target = document.querySelector(`#portfolio-${name}`);
   if (!target) return;
 
   portfolioSections.forEach(section => section.classList.remove('portfolio-open'));
-  target.classList.add('portfolio-open');
+  target.classList.add('portfolio-open', 'in');
 
   requestAnimationFrame(() => {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });

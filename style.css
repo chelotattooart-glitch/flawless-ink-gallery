@@ -603,3 +603,15 @@ body{overflow-x:hidden}
 
 /* Adrian portrait in the portfolio panel */
 .adrian-portrait{display:block;width:min(100%,360px);height:auto;margin:0 auto 28px;border-radius:12px;}
+
+/* Adrian's portrait portfolio popup. */
+#adrian-portfolio-dialog{width:min(880px,calc(100vw - 28px));height:auto;max-height:90vh;max-height:90dvh;margin:auto;padding:0;overflow:auto;border:1px solid #35ead744;border-radius:18px;background:#0b0e0d;color:#f3f0e9;box-shadow:0 24px 90px #000a;}
+#adrian-portfolio-dialog::backdrop{background:#000d;backdrop-filter:blur(5px);}
+.adrian-dialog-content{position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;}
+#adrian-portfolio-dialog .adrian-dialog-photo{display:block;width:100%;height:auto;max-height:85vh;object-fit:contain;padding:0;}
+.adrian-dialog-copy{padding:32px;}
+.adrian-dialog-copy h2{font-family:"Playfair Display",serif;font-size:clamp(38px,6vw,64px);margin:12px 0;}
+.adrian-coming-soon{color:var(--muted);line-height:1.6;}
+.adrian-dialog-close{position:absolute;right:12px;top:12px;z-index:2;width:44px;height:44px;border:1px solid #ffffff77;border-radius:50%;background:#111e;color:white;font-size:28px;cursor:pointer;}
+body.adrian-dialog-open{overflow:hidden;}
+@media(max-width:600px){.adrian-dialog-content{grid-template-columns:1fr;}#adrian-portfolio-dialog .adrian-dialog-photo{max-height:58dvh;}.adrian-dialog-copy{padding:20px 24px;}.adrian-dialog-copy h2{margin:6px 0;}}
