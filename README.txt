@@ -1,12 +1,16 @@
-Flawless Ink Gallery — Welcome/Home update
+Flawless Ink Gallery — Artist roster update
 
-Changes:
-- Home is now a clean welcome screen.
-- Top navigation: Home, Artist, Book, Location.
-- Booking section includes phone/text and email.
-- Location includes address and Google Maps link.
-- Shop hours added from the current Google business listing.
-- Contact information added at the bottom.
+Artist order:
+1. Marcelo
+2. Adrian
+3. Jmike
+4. Sergio
+5. Sammi
+6. Kimmi
+7. TJ
 
-Upload index.html, style.css, script.js and the assets folder to the same GitHub repository.
-Replace the existing files when prompted, then commit the changes.
+Marcelo keeps the existing photo and portfolio.
+The other six artists currently use stylish placeholders until their photos,
+specialties, and tattoo portfolio images are provided.
+
+Upload all files to the same GitHub repository and replace the existing files.

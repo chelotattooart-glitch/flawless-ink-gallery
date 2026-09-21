@@ -89,3 +89,38 @@ body{overflow-x:hidden}
   .hours-grid{gap:12px 15px;font-size:14px}
   .contact-footer{grid-template-columns:1fr;padding:75px 22px}
 }
+
+
+/* Full artist roster */
+.roster-section{grid-template-columns:.72fr 1.28fr;align-items:start}
+.roster-section .artist-copy{position:sticky;top:130px}
+.roster-section .artist-copy h2 em{color:var(--aqua)}
+.artist-roster{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.artist-card{position:relative;min-height:390px;background:#0b0e0d;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .35s ease,box-shadow .35s ease}
+.artist-card:hover{transform:translateY(-6px);border-color:#35ead755;box-shadow:0 24px 60px #0007}
+.artist-card-photo{position:absolute;inset:0}
+.artist-card-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#050706f5 0%,#05070655 48%,transparent 75%)}
+.artist-card-photo img{transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.artist-card:hover .artist-card-photo img{transform:scale(1.045)}
+.artist-card-info{position:relative;z-index:2;padding:26px}
+.artist-card-info h3{font:600 clamp(30px,3vw,48px)/1 "Playfair Display",serif;margin:5px 0 10px}
+.artist-card-info p{color:var(--muted);margin:0;line-height:1.55}
+.artist-card-info a{display:inline-block;margin-top:16px;color:var(--aqua);font-size:13px;border-bottom:1px solid #35ead766;padding-bottom:4px}
+.artist-number{font-size:10px;letter-spacing:.18em;color:var(--aqua)}
+.featured-artist{grid-row:span 2;min-height:795px}
+.artist-initial{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 150px/1 "Playfair Display",serif;color:#35ead711;text-shadow:0 0 70px #35ead71a}
+.placeholder-card{background:radial-gradient(circle at 70% 25%,#0b2b27 0,transparent 35%),#0b0e0d}
+.placeholder-card:before{content:"";position:absolute;width:180px;height:180px;border:1px solid #35ead71f;border-radius:50%;right:-55px;top:-55px}
+@media(max-width:900px){
+  .roster-section{grid-template-columns:1fr}
+  .roster-section .artist-copy{position:static}
+}
+@media(max-width:760px){
+  .artist-roster{grid-template-columns:1fr 1fr;gap:8px}
+  .artist-card{min-height:290px}
+  .featured-artist{grid-column:1 / -1;grid-row:auto;min-height:560px}
+  .artist-card-info{padding:18px}
+  .artist-card-info h3{font-size:30px}
+  .artist-card-info p{font-size:12px}
+  .artist-initial{font-size:100px}
+}
