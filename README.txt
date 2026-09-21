@@ -55,3 +55,9 @@ Portfolio interaction update:
 - A portfolio appears only after clicking that artist's photo or View Portfolio link.
 - Only one artist portfolio is shown at a time.
 - Each portfolio includes a Close button that returns to the artist section.
+
+
+Portfolio refinement:
+- Removed the Close button from artist portfolios.
+- Reduced the vertical gap between the artist section and the opened portfolio.
+- Tightened the spacing between Marcelo's portfolio heading and biography.

@@ -65,10 +65,3 @@ portfolioTriggers.forEach(trigger => {
   });
 });
 
-document.querySelectorAll('.portfolio-close').forEach(button => {
-  button.addEventListener('click', () => {
-    const section = button.closest('.artist-portfolio');
-    if (section) section.classList.remove('portfolio-open');
-    document.querySelector('#artist')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});

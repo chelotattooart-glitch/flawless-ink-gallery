@@ -560,3 +560,43 @@ body{overflow-x:hidden}
     margin-right:18px;
   }
 }
+
+
+/* Portfolio spacing refinement */
+.portfolio-close{display:none!important}
+
+.artist-portfolio.portfolio-open{
+  padding-top:38px!important;
+}
+
+.artist-portfolio .section-head{
+  margin-bottom:22px!important;
+}
+
+.artist-portfolio .artist-bio{
+  margin:0 0 38px!important;
+}
+
+@media(max-width:760px){
+  .artist-portfolio.portfolio-open{
+    padding-top:24px!important;
+  }
+  .artist-portfolio .section-head{
+    margin-bottom:14px!important;
+  }
+  .artist-portfolio .artist-bio{
+    margin:0 10px 30px!important;
+  }
+}
+
+
+/* Ensure every artist has a visible View Portfolio option */
+.artist-profile-info > a[data-open-portfolio]{
+  display:inline-block!important;
+  margin-top:10px;
+  color:var(--aqua);
+  font-size:10px;
+  letter-spacing:.04em;
+  border-bottom:1px solid #35ead766;
+  padding-bottom:3px;
+}
