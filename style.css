@@ -600,16 +600,3 @@ body{overflow-x:hidden}
   border-bottom:1px solid #35ead766;
   padding-bottom:3px;
 }
-
-/* Static homepage hero image */
-.hero-media > img{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  object-fit:cover!important;
-  object-position:center 42%!important;
-  opacity:1!important;
-  transform:scale(1.04)!important;
-  animation:none!important;
-}

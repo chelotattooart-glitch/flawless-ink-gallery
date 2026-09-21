@@ -61,7 +61,3 @@ Portfolio refinement:
 - Removed the Close button from artist portfolios.
 - Reduced the vertical gap between the artist section and the opened portfolio.
 - Tightened the spacing between Marcelo's portfolio heading and biography.
-
-Homepage background update:
-- Removed rotating slideshow.
-- The Flawless Ink logo/studio image now remains fixed as the homepage background.
