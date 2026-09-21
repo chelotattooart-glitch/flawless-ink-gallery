@@ -25,3 +25,18 @@ const onScroll = () => {
 };
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+
+
+// Slow homepage background slideshow
+const heroSlides = [...document.querySelectorAll('.hero-slide')];
+if (heroSlides.length > 1) {
+  let currentHeroSlide = 0;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const slideInterval = prefersReducedMotion ? 12000 : 9000;
+
+  setInterval(() => {
+    heroSlides[currentHeroSlide].classList.remove('active');
+    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+    heroSlides[currentHeroSlide].classList.add('active');
+  }, slideInterval);
+}

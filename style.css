@@ -124,3 +124,270 @@ body{overflow-x:hidden}
   .artist-card-info p{font-size:12px}
   .artist-initial{font-size:100px}
 }
+
+
+/* Slow cinematic homepage background slideshow */
+.hero-media{position:absolute;inset:0;overflow:hidden;background:#050706}
+.hero-media .hero-slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  opacity:0;
+  transform:scale(1.035);
+  transition:opacity 2.6s ease-in-out, transform 11s ease;
+  will-change:opacity,transform;
+}
+.hero-media .hero-slide.active{
+  opacity:1;
+  transform:scale(1.10);
+}
+.hero-media .hero-slide:nth-child(1){object-position:center 42%}
+.hero-media .hero-slide:nth-child(2){object-position:center center}
+.hero-media .hero-slide:nth-child(3),
+.hero-media .hero-slide:nth-child(4){object-position:center 35%}
+.hero-shade{
+  background:
+    linear-gradient(90deg,#050706e9 0%,#0507068a 45%,#0507063f 72%,#05070659 100%),
+    linear-gradient(0deg,#050706 0%,transparent 48%);
+}
+@media(max-width:760px){
+  .hero-media .hero-slide{transition:opacity 2.2s ease-in-out,transform 10s ease}
+  .hero-media .hero-slide.active{transform:scale(1.08)}
+  .hero-shade{
+    background:
+      linear-gradient(0deg,#050706f2 0%,#05070688 55%,#0507064f 100%),
+      linear-gradient(90deg,#05070662,transparent);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-media .hero-slide{transition:opacity .4s linear;transform:none!important}
+}
+
+
+/* Artist horizontal row — photo on top, name below */
+.artist-strip-section{
+  display:block;
+  padding:12vh 5vw 14vh;
+  overflow:hidden;
+}
+.artist-strip-heading{
+  max-width:900px;
+  margin-bottom:50px;
+}
+.artist-strip-heading h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(46px,6vw,88px);
+  line-height:.95;
+  letter-spacing:-.04em;
+  margin:.2em 0;
+}
+.artist-strip-heading h2 em{color:var(--aqua)}
+.artist-strip-heading>p:last-child{
+  color:var(--muted);
+  max-width:650px;
+  line-height:1.8;
+}
+.artist-strip{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:0 0 22px;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:thin;
+  scrollbar-color:var(--aqua) #111;
+}
+.artist-strip::-webkit-scrollbar{height:6px}
+.artist-strip::-webkit-scrollbar-track{background:#111}
+.artist-strip::-webkit-scrollbar-thumb{background:var(--aqua);border-radius:99px}
+.artist-profile-card{
+  flex:0 0 clamp(235px,22vw,320px);
+  scroll-snap-align:start;
+  background:#0b0e0d;
+  border:1px solid var(--line);
+  overflow:hidden;
+  transition:transform .4s cubic-bezier(.16,1,.3,1),border-color .3s ease,box-shadow .3s ease;
+}
+.artist-profile-card:hover{
+  transform:translateY(-7px);
+  border-color:#35ead755;
+  box-shadow:0 24px 65px #0008;
+}
+.artist-photo-frame{
+  aspect-ratio:4/5;
+  width:100%;
+  overflow:hidden;
+  background:#0b0e0d;
+  position:relative;
+}
+.artist-photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .8s cubic-bezier(.16,1,.3,1);
+}
+.artist-profile-card:hover .artist-photo-frame img{transform:scale(1.045)}
+.artist-photo-placeholder{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 35%,#0f3d37 0%,#0b1715 27%,#080b0a 70%);
+}
+.artist-photo-placeholder:before{
+  content:"";
+  position:absolute;
+  width:72%;
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1px solid #35ead726;
+  box-shadow:0 0 60px #35ead710;
+}
+.artist-photo-placeholder span{
+  position:relative;
+  z-index:1;
+  font:600 clamp(88px,9vw,140px)/1 "Playfair Display",serif;
+  color:#35ead737;
+}
+.artist-photo-placeholder small{
+  position:absolute;
+  z-index:1;
+  bottom:24px;
+  font-size:8px;
+  letter-spacing:.22em;
+  color:#8a9a96;
+}
+.artist-profile-info{padding:22px 20px 24px}
+.artist-profile-info h3{
+  font:600 clamp(28px,2.5vw,40px)/1 "Playfair Display",serif;
+  margin:7px 0 10px;
+}
+.artist-profile-info p{
+  color:var(--muted);
+  min-height:38px;
+  margin:0;
+  line-height:1.55;
+  font-size:13px;
+}
+.artist-profile-info a{
+  display:inline-block;
+  margin-top:14px;
+  color:var(--aqua);
+  font-size:12px;
+  border-bottom:1px solid #35ead766;
+  padding-bottom:4px;
+}
+@media(max-width:760px){
+  .artist-strip-section{padding:85px 18px 100px}
+  .artist-strip-heading{margin-bottom:34px}
+  .artist-strip{gap:10px;margin-right:-18px;padding-right:18px}
+  .artist-profile-card{flex-basis:76vw;max-width:300px}
+  .artist-profile-info{padding:18px}
+  .artist-profile-info h3{font-size:32px}
+}
+
+
+/* Compact artist cards with small circular portraits */
+.artist-strip{
+  align-items:flex-start;
+  gap:18px;
+}
+.artist-profile-card{
+  flex:0 0 clamp(155px,15vw,205px);
+  min-height:0;
+  background:transparent;
+  border:0;
+  text-align:center;
+  overflow:visible;
+  box-shadow:none;
+}
+.artist-profile-card:hover{
+  transform:translateY(-5px);
+  border-color:transparent;
+  box-shadow:none;
+}
+.artist-photo-frame{
+  width:118px;
+  height:118px;
+  aspect-ratio:1;
+  border-radius:50%;
+  margin:0 auto 16px;
+  border:1px solid #35ead755;
+  box-shadow:0 0 0 5px #35ead708, 0 15px 40px #0007;
+  overflow:hidden;
+  background:#0b0e0d;
+}
+.artist-photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.artist-profile-card:hover .artist-photo-frame img{
+  transform:scale(1.06);
+}
+.artist-photo-placeholder{
+  width:118px;
+  height:118px;
+  min-height:118px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle at 50% 35%,#12473f 0%,#0b1715 43%,#080b0a 100%);
+}
+.artist-photo-placeholder:before{
+  width:82%;
+  height:82%;
+}
+.artist-photo-placeholder span{
+  font-size:48px;
+  color:#35ead75c;
+}
+.artist-photo-placeholder small{
+  display:none;
+}
+.artist-profile-info{
+  padding:0 6px 18px;
+}
+.artist-profile-info h3{
+  font-size:clamp(24px,2vw,32px);
+  margin:5px 0 7px;
+}
+.artist-profile-info p{
+  min-height:0;
+  font-size:11px;
+  line-height:1.45;
+}
+.artist-number{
+  font-size:8px;
+}
+.artist-profile-info a{
+  font-size:10px;
+  margin-top:10px;
+}
+@media(max-width:760px){
+  .artist-strip{
+    gap:8px;
+  }
+  .artist-profile-card{
+    flex-basis:145px;
+    max-width:145px;
+  }
+  .artist-photo-frame,
+  .artist-photo-placeholder{
+    width:94px;
+    height:94px;
+    min-height:94px;
+  }
+  .artist-photo-placeholder span{
+    font-size:38px;
+  }
+  .artist-profile-info{
+    padding:0 4px 14px;
+  }
+  .artist-profile-info h3{
+    font-size:24px;
+  }
+}
