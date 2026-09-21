@@ -639,6 +639,13 @@ body{overflow-x:hidden}
 body.artist-dialog-open{overflow:hidden;}
 @media(max-width:650px){.artist-dialog-toolbar{padding:10px 16px;}.artist-dialog-body{padding:20px;}.artist-dialog-header{grid-template-columns:1fr;gap:20px;}.artist-portfolio-dialog .artist-dialog-portrait{max-height:45dvh;}.artist-dialog-initial{width:130px;font-size:56px;}.artist-dialog-gallery{columns:2;column-gap:8px;}.artist-dialog-gallery .tile{margin-bottom:8px;}}
 
+
+/* Direct access to Marcelo's Instagram profile. */
+.artist-instagram-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;margin-top:12px;padding:10px 16px;border:1px solid #35ead766;border-radius:999px;color:var(--aqua);background:#35ead70a;font-size:12px;font-weight:600;line-height:1.3;transition:background .2s,border-color .2s;}
+.artist-instagram-link:hover{background:#35ead71c;border-color:var(--aqua);}
+.artist-instagram-link:focus-visible{outline:2px solid var(--aqua);outline-offset:4px;}
+.artist-profile-info>.artist-instagram-link{font-size:10px;margin-top:12px;}
+
 </style>
 </head>
 <body>
@@ -700,6 +707,7 @@ body.artist-dialog-open{overflow:hidden;}
             <h3>Marcelo</h3>
             <p>Black & Grey · Realism · Custom Work</p>
             <a href="#portfolio-marcelo" data-open-portfolio="marcelo">View portfolio →</a>
+            <a class="artist-instagram-link" href="https://www.instagram.com/marcelo.tattooart/" target="_blank" rel="noopener noreferrer" aria-label="View Marcelo on Instagram (opens in a new tab)">View Instagram <span aria-hidden="true">↗</span></a>
           </div>
         </article>
 
@@ -834,7 +842,7 @@ body.artist-dialog-open{overflow:hidden;}
 <dialog class="artist-portfolio-dialog" id="portfolio-marcelo" aria-labelledby="marcelo-dialog-title">
   <div class="artist-dialog-toolbar"><span>FLAWLESS INK GALLERY</span><button class="artist-dialog-close" type="button" aria-label="Close Marcelo portfolio" autofocus>×</button></div>
   <div class="artist-dialog-body">
-    <header class="artist-dialog-header"><img class="artist-dialog-portrait" src="assets/artist-closeup.jpeg" alt="Marcelo, tattoo artist at Flawless Ink Gallery"><div><p class="eyebrow">MEET THE ARTIST</p><h2 id="marcelo-dialog-title">Marcelo</h2><p class="artist-dialog-role">Tattoo artist · Flawless Ink Gallery</p></div></header>
+    <header class="artist-dialog-header"><img class="artist-dialog-portrait" src="assets/artist-closeup.jpeg" alt="Marcelo, tattoo artist at Flawless Ink Gallery"><div><p class="eyebrow">MEET THE ARTIST</p><h2 id="marcelo-dialog-title">Marcelo</h2><p class="artist-dialog-role">Tattoo artist · Flawless Ink Gallery</p><a class="artist-instagram-link" href="https://www.instagram.com/marcelo.tattooart/" target="_blank" rel="noopener noreferrer" aria-label="View Marcelo on Instagram (opens in a new tab)">View Instagram <span aria-hidden="true">↗</span></a></div></header>
     <section class="artist-dialog-about" aria-labelledby="marcelo-about"><h3 id="marcelo-about">About Marcelo</h3>
           <p class="artist-bio-intro">Born in Argentina, I moved to the United States in 2016 with a dream: to elevate my craft, connect with talented artists, and push my creativity beyond new horizons.</p>
 

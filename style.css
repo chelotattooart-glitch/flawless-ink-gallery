@@ -626,3 +626,9 @@ body{overflow-x:hidden}
 .artist-portfolio-dialog .artist-dialog-gallery img{display:block;width:100%;height:auto;object-fit:contain;padding:0;}
 body.artist-dialog-open{overflow:hidden;}
 @media(max-width:650px){.artist-dialog-toolbar{padding:10px 16px;}.artist-dialog-body{padding:20px;}.artist-dialog-header{grid-template-columns:1fr;gap:20px;}.artist-portfolio-dialog .artist-dialog-portrait{max-height:45dvh;}.artist-dialog-initial{width:130px;font-size:56px;}.artist-dialog-gallery{columns:2;column-gap:8px;}.artist-dialog-gallery .tile{margin-bottom:8px;}}
+
+/* Direct access to Marcelo's Instagram profile. */
+.artist-instagram-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;margin-top:12px;padding:10px 16px;border:1px solid #35ead766;border-radius:999px;color:var(--aqua);background:#35ead70a;font-size:12px;font-weight:600;line-height:1.3;transition:background .2s,border-color .2s;}
+.artist-instagram-link:hover{background:#35ead71c;border-color:var(--aqua);}
+.artist-instagram-link:focus-visible{outline:2px solid var(--aqua);outline-offset:4px;}
+.artist-profile-info>.artist-instagram-link{font-size:10px;margin-top:12px;}
