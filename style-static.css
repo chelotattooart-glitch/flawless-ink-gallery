@@ -126,47 +126,6 @@ body{overflow-x:hidden}
 }
 
 
-/* Slow cinematic homepage background slideshow */
-.hero-media{position:absolute;inset:0;overflow:hidden;background:#050706}
-.hero-media .hero-slide{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  opacity:0;
-  transform:scale(1.035);
-  transition:opacity 2.6s ease-in-out, transform 11s ease;
-  will-change:opacity,transform;
-}
-.hero-media .hero-slide.active{
-  opacity:1;
-  transform:scale(1.10);
-}
-.hero-media .hero-slide:nth-child(1){object-position:center 42%}
-.hero-media .hero-slide:nth-child(2){object-position:center center}
-.hero-media .hero-slide:nth-child(3),
-.hero-media .hero-slide:nth-child(4){object-position:center 35%}
-.hero-shade{
-  background:
-    linear-gradient(90deg,#050706e9 0%,#0507068a 45%,#0507063f 72%,#05070659 100%),
-    linear-gradient(0deg,#050706 0%,transparent 48%);
-}
-@media(max-width:760px){
-  .hero-media .hero-slide{transition:opacity 2.2s ease-in-out,transform 10s ease}
-  .hero-media .hero-slide.active{transform:scale(1.08)}
-  .hero-shade{
-    background:
-      linear-gradient(0deg,#050706f2 0%,#05070688 55%,#0507064f 100%),
-      linear-gradient(90deg,#05070662,transparent);
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .hero-media .hero-slide{transition:opacity .4s linear;transform:none!important}
-}
-
-
 /* Artist horizontal row — photo on top, name below */
 .artist-strip-section{
   display:block;
@@ -601,48 +560,79 @@ body{overflow-x:hidden}
   padding-bottom:3px;
 }
 
-/* Adrian portrait in the portfolio panel */
-.adrian-portrait{display:block;width:min(100%,360px);height:auto;margin:0 auto 28px;border-radius:12px;}
+/* Static homepage hero image */
+.hero-media > img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 42%!important;
+  opacity:1!important;
+  transform:scale(1.04)!important;
+  animation:none!important;
+}
 
 
-/* Shared artist portfolios: portraits, biographies, and photo galleries. */
-.artist-portfolio-dialog{width:min(1040px,calc(100vw - 28px));height:auto;max-height:92vh;max-height:92dvh;margin:auto;padding:0;overflow:auto;overscroll-behavior:contain;border:1px solid #35ead744;border-radius:18px;background:#0b0e0d;color:#f3f0e9;box-shadow:0 24px 90px #000a;}
-.artist-portfolio-dialog::backdrop{background:#000d;backdrop-filter:blur(5px);}
-.artist-dialog-toolbar{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;background:#0b0e0df5;border-bottom:1px solid var(--line);}
-.artist-dialog-toolbar>span{font-size:10px;letter-spacing:.18em;color:var(--aqua);}
-.artist-dialog-close{flex-shrink:0;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;background:#111;color:white;font-size:28px;cursor:pointer;}
-.artist-dialog-close:focus-visible,.artist-dialog-gallery .tile:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;}
-.artist-dialog-body{padding:30px;}
-.artist-dialog-header{display:grid;grid-template-columns:minmax(160px,280px) 1fr;gap:32px;align-items:center;}
-.artist-portfolio-dialog .artist-dialog-portrait{display:block;width:100%;height:auto;max-height:390px;object-fit:contain;padding:0;border-radius:12px;}
-.artist-dialog-initial{display:grid;place-items:center;aspect-ratio:1;border-radius:12px;background:radial-gradient(circle,#12473f,#080b0a);font-size:80px;color:var(--aqua);}
-.artist-dialog-header h2{font-family:"Playfair Display",serif;font-size:clamp(40px,6vw,76px);line-height:1.1;margin:12px 0;}
-.artist-dialog-role,.artist-content-pending,.artist-gallery-hint{color:var(--muted);line-height:1.7;}
-.artist-dialog-about,.artist-dialog-work{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);}
-.artist-dialog-body h3{font-size:22px;margin:0 0 16px;}
-.artist-dialog-about p{max-width:800px;line-height:1.8;}
-.artist-dialog-gallery{columns:3;column-gap:12px;}
-.artist-dialog-gallery .tile,.artist-dialog-gallery .tile.tall{display:block;height:auto;min-height:0;margin:0 0 12px;border-radius:8px;overflow:hidden;}
-.artist-portfolio-dialog .artist-dialog-gallery img{display:block;width:100%;height:auto;object-fit:contain;padding:0;}
-body.artist-dialog-open{overflow:hidden;}
-@media(max-width:650px){.artist-dialog-toolbar{padding:10px 16px;}.artist-dialog-body{padding:20px;}.artist-dialog-header{grid-template-columns:1fr;gap:20px;}.artist-portfolio-dialog .artist-dialog-portrait{max-height:45dvh;}.artist-dialog-initial{width:130px;font-size:56px;}.artist-dialog-gallery{columns:2;column-gap:8px;}.artist-dialog-gallery .tile{margin-bottom:8px;}}
+/* Final: static homepage background only */
+.hero-media > img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 42%!important;
+  opacity:1!important;
+  transform:scale(1.04)!important;
+  transition:none!important;
+  animation:none!important;
+}
 
-/* Direct access to Marcelo's Instagram profile. */
-.artist-instagram-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;margin-top:12px;padding:10px 16px;border:1px solid #35ead766;border-radius:999px;color:var(--aqua);background:#35ead70a;font-size:12px;font-weight:600;line-height:1.3;transition:background .2s,border-color .2s;}
-.artist-instagram-link:hover{background:#35ead71c;border-color:var(--aqua);}
-.artist-instagram-link:focus-visible{outline:2px solid var(--aqua);outline-offset:4px;}
-.artist-profile-info>.artist-instagram-link{font-size:10px;margin-top:12px;}
 
-/* Frame Sammi's face and upper torso, with hands outside the portrait. */
-.artist-photo-frame.sammi-photo-frame{position:relative;}
-.artist-photo-frame.sammi-photo-frame img{position:absolute;display:block;width:170%;max-width:none;height:auto;left:-70%;top:-42%;object-fit:initial;transform-origin:72% 40%;}
+/* HARD RESET: one permanent homepage background image only */
+.hero-media{
+  position:absolute!important;
+  inset:0!important;
+  overflow:hidden!important;
+  background:#050706!important;
+}
+.hero-media .hero-static-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center 42%!important;
+  opacity:1!important;
+  visibility:visible!important;
+  display:block!important;
+  transform:scale(1.04)!important;
+  transition:none!important;
+  animation:none!important;
+}
+.hero-media .hero-slide{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+}
 
-/* Match Sammi's portfolio portrait to her artist-card framing. */
-.sammi-dialog-photo-frame{position:relative;width:100%;max-width:280px;aspect-ratio:1;overflow:hidden;border-radius:12px;background:#0b0e0d;}
-.artist-portfolio-dialog .sammi-dialog-photo-frame img{position:absolute;display:block;width:170%;max-width:none;height:auto;max-height:none;left:-70%;top:-42%;object-fit:initial;padding:0;}
-@media(max-width:650px){.sammi-dialog-photo-frame{max-width:280px;margin-inline:auto;}}
 
-/* Samantha's biography specialties. */
-#portfolio-sammi .artist-dialog-about h4{margin:24px 0 12px;color:var(--aqua);font-size:16px;}
-.sammi-specialties{padding-left:22px;margin:0 0 24px;line-height:1.9;}
-.sammi-specialties li::marker{color:var(--aqua);}
+/* Gentle motion on the static homepage image */
+.hero-media .hero-static-image{
+  animation: heroDrift 16s ease-in-out infinite alternate !important;
+  will-change: transform;
+}
+@keyframes heroDrift{
+  0%{
+    transform: scale(1.04) translate3d(0,0,0) !important;
+  }
+  100%{
+    transform: scale(1.09) translate3d(-1.2%, 1.2%, 0) !important;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-media .hero-static-image{
+    animation: none !important;
+    transform: scale(1.04) !important;
+  }
+}

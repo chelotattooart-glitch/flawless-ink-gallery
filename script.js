@@ -25,3 +25,50 @@ const onScroll = () => {
 };
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+
+
+// Slow homepage background slideshow
+const heroSlides = [...document.querySelectorAll('.hero-slide')];
+if (heroSlides.length > 1) {
+  let currentHeroSlide = 0;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const slideInterval = prefersReducedMotion ? 12000 : 9000;
+
+  setInterval(() => {
+    heroSlides[currentHeroSlide].classList.remove('active');
+    currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+    heroSlides[currentHeroSlide].classList.add('active');
+  }, slideInterval);
+}
+
+
+// Every artist opens the same accessible portfolio layout.
+const artistDialogs = [...document.querySelectorAll('.artist-portfolio-dialog')];
+function syncArtistScrollLock() {
+  document.body.classList.toggle('artist-dialog-open', artistDialogs.some(dialog => dialog.open));
+}
+function openArtistPortfolio(name) {
+  const target = document.getElementById('portfolio-' + name);
+  if (!target || !target.classList.contains('artist-portfolio-dialog')) return;
+  artistDialogs.forEach(dialog => { if (dialog !== target && dialog.open) dialog.close(); });
+  if (!target.open) target.showModal();
+  target.scrollTop = 0;
+  syncArtistScrollLock();
+}
+artistDialogs.forEach(dialog => {
+  dialog.querySelector('.artist-dialog-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', syncArtistScrollLock);
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  });
+});
+document.querySelectorAll('[data-open-portfolio]').forEach(trigger => {
+  trigger.setAttribute('aria-haspopup', 'dialog');
+  trigger.setAttribute('aria-controls', 'portfolio-' + trigger.dataset.openPortfolio);
+  trigger.addEventListener('click', event => {
+    event.preventDefault();
+    openArtistPortfolio(trigger.dataset.openPortfolio);
+  });
+});
