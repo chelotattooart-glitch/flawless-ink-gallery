@@ -11,7 +11,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/site.css?v=google-reviews-1"/>
+<link rel="stylesheet" href="assets/site.css?v=deals-1"/>
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}.form-submit{display:none}</style></noscript>
 </head>
 <body>
@@ -22,6 +22,7 @@
 <a href="#artist">Artists</a>
 <a class="book" href="#book">Book a consultation</a>
 <a href="#location">Location</a>
+<a href="#deals">Deals</a>
 </nav>
 </header>
 <main id="top">
@@ -197,6 +198,15 @@
 </div>
 </div>
 </section>
+<section class="deals-section reveal" id="deals" aria-labelledby="deals-title">
+<div class="deals-intro"><p class="eyebrow">LIMITED-TIME OFFERS</p><h2 id="deals-title">Your next piece.<br/><em>A little closer.</em></h2><p>Explore our current studio deals and ask about your next tattoo.</p></div>
+<article class="deal-coupon" aria-labelledby="two-session-deal" data-expires-at="2026-10-01T00:00:00-04:00" hidden>
+<div class="deal-coupon-main"><span class="deal-badge">September offer</span><h3 id="two-session-deal">Two tattoo sessions.<br/>One set price.</h3><p class="deal-description">Bring your next tattoo project to Flawless Ink Gallery with our two-session package.</p><p class="deal-expiration">Expires <time datetime="2026-09-30T23:59:59-04:00">September 30, 2026, at 11:59 p.m. ET</time></p><p class="deal-booking-note">Mention the two-session deal when requesting your consultation.</p></div>
+<div class="deal-coupon-stub"><p class="deal-session-count">2 SESSIONS</p><p class="deal-price"><span class="sr-only">Total price: </span>$2,500</p><p class="deal-price-note">Total package price · USD</p><a class="cta deal-cta" href="#book">Ask about this deal <span aria-hidden="true">↗</span></a></div>
+</article>
+<p id="deals-empty" class="deals-empty" hidden>New monthly offers are coming soon. <a href="#book">Ask about your next tattoo →</a></p>
+<noscript><p>Contact the studio for current offers and expiration dates.</p></noscript>
+</section>
 <section class="contact-footer reveal" id="contact">
 <div>
 <p class="eyebrow">CONTACT</p>
@@ -325,6 +335,7 @@
 </aside>
 <button id="google-review-launcher" class="google-review-launcher" type="button" aria-controls="google-review-popup" aria-expanded="false" hidden>Google reviews <span aria-hidden="true">↗</span></button>
 <script src="assets/google-reviews.js" defer></script>
+<script src="assets/deals.js" defer></script>
 </body>
 </html>
 

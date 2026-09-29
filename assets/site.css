@@ -718,3 +718,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .google-review-note{font-size:9px;line-height:1.6;color:var(--muted);margin:14px 0 0}
 .google-review-launcher{position:fixed;z-index:24;left:20px;bottom:20px;min-height:44px;padding:12px 18px;display:flex;gap:14px;align-items:center;border:1px solid #35ead766;border-radius:999px;background:#0b0e0df5;color:var(--aqua);font:600 12px/1.5 Manrope,system-ui,sans-serif;box-shadow:0 8px 30px #0007;cursor:pointer}
 @media(max-width:420px){.google-review-popup{left:16px;bottom:max(16px,env(safe-area-inset-bottom));padding:16px}.google-review-launcher{left:16px;bottom:max(16px,env(safe-area-inset-bottom))}}
+
+/* Coupon-style studio offers. Add an approved expiry date when supplied. */
+.deals-section{padding:95px 7vw;border-top:1px solid var(--line);background:radial-gradient(ellipse at 80% 60%,#10312a66,transparent 65%),#080c0a}
+.deals-intro{max-width:680px;margin-bottom:38px}.deals-intro h2{font:600 clamp(38px,5vw,68px)/1.05 "Playfair Display",serif;letter-spacing:-.035em;margin:16px 0 22px}.deals-intro h2 em{color:var(--aqua)}.deals-intro>p:last-child{color:var(--muted);line-height:1.8}
+.deal-coupon{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);max-width:1040px;border:1px solid #35ead74d;border-radius:20px;background:#0b1210;overflow:hidden;box-shadow:0 20px 70px #0004}
+.deal-coupon-main{padding:clamp(24px,4vw,48px)}.deal-badge{display:inline-block;padding:8px 12px;border:1px solid #e8bd6966;border-radius:999px;color:#e8bd69;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.deal-coupon h3{font:600 clamp(28px,3vw,40px)/1.2 "Playfair Display",serif;margin:24px 0 18px}.deal-description{max-width:420px;color:#c2cbc6;font-size:14px;line-height:1.8}.deal-booking-note{max-width:420px;margin:22px 0 0;font-size:12px;line-height:1.8;color:var(--muted)}
+.deal-coupon-stub{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;border-left:2px dashed #35ead744;text-align:center;background:#35ead705}
+.deal-session-count{font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--aqua);margin:0 0 18px}.deal-price{font:600 clamp(44px,6vw,76px)/1 "Playfair Display",serif;margin:0;letter-spacing:-.05em}.deal-price-note{font-size:11px;color:var(--muted);margin:14px 0 6px}
+.deal-cta{font-size:12px;gap:18px;justify-content:center;position:relative;z-index:0;min-height:48px}
+@media(max-width:760px){.deals-section{padding:65px 22px}.deal-coupon{grid-template-columns:minmax(0,1fr)}.deal-coupon-stub{border-left:0;border-top:2px dashed #35ead744;padding:30px 22px}.deal-price{font-size:60px}.nav nav{overflow-x:auto;justify-content:flex-start;gap:16px}.nav nav a{flex-shrink:0;white-space:nowrap}.nav nav .book{white-space:nowrap}}
+
+.deal-expiration{color:#e8bd69;font-size:12px;line-height:1.7;margin:22px 0 0}.deals-empty{padding:28px;border:1px dashed #35ead744;border-radius:14px;color:var(--muted);line-height:1.8}.deals-empty a{display:block;margin-top:12px;color:var(--aqua)}
