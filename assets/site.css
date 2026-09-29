@@ -733,3 +733,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .deal-expiration{color:#e8bd69;font-size:12px;line-height:1.7;margin:22px 0 0}.deals-empty{padding:28px;border:1px dashed #35ead744;border-radius:14px;color:var(--muted);line-height:1.8}.deals-empty a{display:block;margin-top:12px;color:var(--aqua)}
 
 .deal-coupon + .deal-coupon{margin-top:24px}
+
+.deal-claim-status{font-size:11px;color:#e8bd69;margin:10px 0 0}.deal-cta{color:var(--ink);font-family:inherit;cursor:pointer}.deal-cta:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.deal-claim-dialog{width:min(560px,calc(100vw - 28px));height:auto;max-height:90dvh;margin:auto;padding:0;overflow:auto;border:1px solid #35ead766;border-radius:18px;background:#0b0e0d;color:var(--ink);box-shadow:0 25px 90px #000b}
+.deal-claim-dialog::backdrop{background:#000d;backdrop-filter:blur(5px)}
+.deal-claim-toolbar{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 22px;background:#0b0e0d;border-bottom:1px solid var(--line);z-index:1}.deal-claim-toolbar .eyebrow{font-size:9px}
+#deal-claim-close{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:#111;color:white;font-size:26px;cursor:pointer}
+.deal-claim-body{padding:26px}.deal-claim-body h2{font:600 34px/1.2 "Playfair Display",serif;margin:0 0 14px}.deal-claim-body p{font-size:13px;line-height:1.8;color:#bec8c2}#deal-claim-summary{font-size:16px;font-weight:600;color:var(--aqua)}
+.deal-payment-card{margin:22px 0;padding:22px;border:1px solid #35ead744;border-radius:12px;background:#35ead707}.deal-payment-card .eyebrow{color:var(--aqua);font-size:9px}.deal-payment-card .deal-deposit-amount{font:600 46px/1.2 "Playfair Display",serif;color:var(--ink);margin:10px 0 24px}.deal-deposit-amount span{font:12px Manrope,system-ui;color:var(--muted)}
+.deal-payment-card dl{margin:0}.deal-payment-card dt{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0 6px}.deal-payment-card dd{margin:0;font-size:17px;overflow-wrap:anywhere}
+.deal-claim-actions{display:flex;flex-wrap:wrap;gap:12px}.deal-claim-actions a{margin-top:8px;font-size:12px;min-height:44px}.deal-claim-body #deal-claim-unavailable{color:#e8bd69}body.deal-dialog-open{overflow:hidden}
+@media(max-width:420px){.deal-claim-body{padding:20px}.deal-payment-card{padding:18px}}

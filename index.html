@@ -11,7 +11,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/site.css?v=deals-2"/>
+<link rel="stylesheet" href="assets/site.css?v=claims-1"/>
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}.form-submit{display:none}</style></noscript>
 </head>
 <body>
@@ -200,13 +200,13 @@
 </section>
 <section class="deals-section reveal" id="deals" aria-labelledby="deals-title">
 <div class="deals-intro"><p class="eyebrow">LIMITED-TIME OFFERS</p><h2 id="deals-title">Your next piece.<br/><em>A little closer.</em></h2><p>Explore our current studio deals and ask about your next tattoo.</p></div>
-<article class="deal-coupon" aria-labelledby="two-session-deal" data-expires-at="2026-10-01T00:00:00-04:00" hidden>
-<div class="deal-coupon-main"><span class="deal-badge">September offer</span><h3 id="two-session-deal">Two full-day sessions.<br/>One set price.</h3><p class="deal-description">Bring your next tattoo project to Flawless Ink Gallery with our two full-day session package.</p><p class="deal-expiration">Expires <time datetime="2026-09-30T23:59:59-04:00">September 30, 2026, at 11:59 p.m. ET</time></p><p class="deal-booking-note">Mention the two full-day session deal when requesting your consultation.</p></div>
-<div class="deal-coupon-stub"><p class="deal-session-count">2 FULL-DAY SESSIONS</p><p class="deal-price"><span class="sr-only">Total price: </span>$2,500</p><p class="deal-price-note">Total package price · USD</p><a class="cta deal-cta" href="#book">Ask about this deal <span aria-hidden="true">↗</span></a></div>
+<article class="deal-coupon" aria-labelledby="two-session-deal" data-claim-limit="5" data-confirmed-claims="0" data-offer-name="Two full-day sessions" data-offer-total="$2,500" data-expires-at="2026-10-01T00:00:00-04:00" hidden>
+<div class="deal-coupon-main"><span class="deal-badge">September offer</span><h3 id="two-session-deal">Two full-day sessions.<br/>One set price.</h3><p class="deal-description">Bring your next tattoo project to Flawless Ink Gallery with our two full-day session package.</p><p class="deal-expiration">Expires <time datetime="2026-09-30T23:59:59-04:00">September 30, 2026, at 11:59 p.m. ET</time></p><p class="deal-booking-note">Limited to 5 confirmed claims. A $500 deposit is required. Contact the studio to confirm availability before paying.</p></div>
+<div class="deal-coupon-stub"><p class="deal-session-count">2 FULL-DAY SESSIONS</p><p class="deal-price"><span class="sr-only">Total price: </span>$2,500</p><p class="deal-price-note">Total package price · USD</p><p class="deal-claim-status">Limited to 5 claims</p><button class="cta deal-cta" type="button" data-claim-deal aria-haspopup="dialog" aria-controls="deal-claim-dialog">Claim this deal <span aria-hidden="true">↗</span></button></div>
 </article>
-<article class="deal-coupon" aria-labelledby="half-day-deal" data-expires-at="2026-10-01T00:00:00-04:00" hidden>
-<div class="deal-coupon-main"><span class="deal-badge">September offer</span><h3 id="half-day-deal">A half-day session.<br/>Your next piece.</h3><p class="deal-description">Book a half-day tattoo session at Flawless Ink Gallery for one set price.</p><p class="deal-expiration">Expires <time datetime="2026-09-30T23:59:59-04:00">September 30, 2026, at 11:59 p.m. ET</time></p><p class="deal-booking-note">Mention the half-day session deal when requesting your consultation.</p></div>
-<div class="deal-coupon-stub"><p class="deal-session-count">1 HALF-DAY SESSION</p><p class="deal-price"><span class="sr-only">Session price: </span>$1,000</p><p class="deal-price-note">Per half-day session · USD</p><a class="cta deal-cta" href="#book">Ask about this deal <span aria-hidden="true">↗</span></a></div>
+<article class="deal-coupon" aria-labelledby="half-day-deal" data-claim-limit="5" data-confirmed-claims="0" data-offer-name="One half-day session" data-offer-total="$1,000" data-expires-at="2026-10-01T00:00:00-04:00" hidden>
+<div class="deal-coupon-main"><span class="deal-badge">September offer</span><h3 id="half-day-deal">A half-day session.<br/>Your next piece.</h3><p class="deal-description">Book a half-day tattoo session at Flawless Ink Gallery for one set price.</p><p class="deal-expiration">Expires <time datetime="2026-09-30T23:59:59-04:00">September 30, 2026, at 11:59 p.m. ET</time></p><p class="deal-booking-note">Limited to 5 confirmed claims. A $500 deposit is required. Contact the studio to confirm availability before paying.</p></div>
+<div class="deal-coupon-stub"><p class="deal-session-count">1 HALF-DAY SESSION</p><p class="deal-price"><span class="sr-only">Session price: </span>$1,000</p><p class="deal-price-note">Per half-day session · USD</p><p class="deal-claim-status">Limited to 5 claims</p><button class="cta deal-cta" type="button" data-claim-deal aria-haspopup="dialog" aria-controls="deal-claim-dialog">Claim this deal <span aria-hidden="true">↗</span></button></div>
 </article>
 <p id="deals-empty" class="deals-empty" hidden>New monthly offers are coming soon. <a href="#book">Ask about your next tattoo →</a></p>
 <noscript><p>Contact the studio for current offers and expiration dates.</p></noscript>
@@ -339,7 +339,23 @@
 </aside>
 <button id="google-review-launcher" class="google-review-launcher" type="button" aria-controls="google-review-popup" aria-expanded="false" hidden>Google reviews <span aria-hidden="true">↗</span></button>
 <script src="assets/google-reviews.js" defer></script>
-<script src="assets/deals.js" defer></script>
+
+<dialog id="deal-claim-dialog" class="deal-claim-dialog" aria-labelledby="deal-claim-title" aria-describedby="deal-claim-intro">
+<div class="deal-claim-toolbar"><p class="eyebrow">FLAWLESS INK GALLERY</p><button type="button" id="deal-claim-close" aria-label="Close deal claim" autofocus>×</button></div>
+<div class="deal-claim-body"><h2 id="deal-claim-title">Claim this deal</h2><p id="deal-claim-summary"></p>
+<p id="deal-claim-intro">Each offer is limited to 5 confirmed claims. Contact the studio to confirm availability before sending your deposit.</p>
+<div id="deal-payment-instructions">
+<div class="deal-payment-card"><p class="eyebrow">REQUIRED DEPOSIT</p><p class="deal-deposit-amount">$500 <span>USD</span></p>
+<dl><dt>Payment method</dt><dd>Zelle</dd><dt>Send to phone number</dt><dd><strong>754-306-8422</strong></dd><dt>Recipient name</dt><dd><strong>Flawless Ink LLC</strong></dd></dl>
+<p>Check that Zelle shows <strong>Flawless Ink LLC</strong> before sending.</p></div>
+<p>Your deal is claimed only after the studio confirms availability and verifies your $500 deposit. Opening this window does not reserve a spot.</p>
+<p>Text the studio your name, the offer you chose, and your payment confirmation so your claim can be checked.</p>
+<div class="deal-claim-actions"><a id="deal-claim-text" class="cta" href="sms:+17543068422">Text the studio</a><a class="ghost-cta" href="tel:+17543068422">Call 754-306-8422</a></div>
+</div>
+<p id="deal-claim-unavailable" role="status" hidden>This offer is no longer available. Please contact the studio about current deals.</p>
+</div>
+</dialog>
+<script src="assets/deals.js?v=claims-1" defer></script>
 </body>
 </html>
 

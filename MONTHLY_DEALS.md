@@ -24,3 +24,20 @@ expiry unless the owner specifies otherwise. Account for daylight saving time.
 Retain the Deals navigation and empty state when there is no active offer.
 Do not alter Instagram, reviews, biographies, or booking behavior. Use the
 current GitHub file SHA/ref when updating final-1; never force-push.
+
+## Deposit claims and quantities
+
+Each offer is limited to five studio-confirmed claims. Deposit: USD 500 via
+Zelle, phone 754-306-8422, recipient Flawless Ink LLC. Customers must confirm
+availability before paying. Only studio verification of the deposit confirms
+a claim; the site cannot read Zelle transactions or reserve global inventory.
+
+The studio must reconcile deposits and prevent accepting more than five claims
+per offer. After verified claims, update data-confirmed-claims on that coupon
+in index.html (never above data-claim-limit=5). The site disables the claim
+button at five. Do not increment from clicks, customer assertions, SMS drafts
+or browser storage. No payments are processed or messages sent by the site.
+Never publish customer names, receipts, transaction references or bank details.
+
+For new owner-approved coupons, retain the five-claim limit and explicit expiry.
+Reset the count only for genuinely new approved offers, not expired inventory.
