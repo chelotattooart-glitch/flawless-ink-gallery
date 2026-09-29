@@ -11,7 +11,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/site.css?v=instagram-1"/>
+<link rel="stylesheet" href="assets/site.css?v=google-reviews-1"/>
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}.form-submit{display:none}</style></noscript>
 </head>
 <body>
@@ -302,6 +302,29 @@
 
 <script src="assets/site.js" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>
+
+<aside id="google-review-popup" class="google-review-popup" aria-labelledby="google-review-heading" hidden>
+<div class="google-review-header"><div><p class="eyebrow">CLIENT EXPERIENCES</p><h2 id="google-review-heading">Google reviews</h2></div><button id="google-review-close" type="button" aria-label="Close review popup">×</button></div>
+<div id="google-review-cards"><article class="google-review-card">
+<p class="google-review-author">Gabriel Villasana</p>
+<p class="google-review-meta"><span class="google-review-stars" aria-label="5 out of 5 stars">★★★★★</span> <time datetime="2026-05-31T19:44:11.842160Z">May 31, 2026</time></p>
+<blockquote>If you are looking for a true master of black and grey realism, Adrian is the artist to go to. I recently…</blockquote>
+</article>
+<article class="google-review-card" hidden>
+<p class="google-review-author">Evan Scott</p>
+<p class="google-review-meta"><span class="google-review-stars" aria-label="5 out of 5 stars">★★★★★</span> <time datetime="2026-05-18T22:14:10.932209Z">May 18, 2026</time></p>
+<blockquote>Marcello Is a Great Guy And is The Best Artist And Has a Great Shop And I Would Recommend him every time!!!</blockquote>
+</article>
+<article class="google-review-card" hidden>
+<p class="google-review-author">Gianna Ezzo</p>
+<p class="google-review-meta"><span class="google-review-stars" aria-label="5 out of 5 stars">★★★★★</span> <time datetime="2026-05-02T01:21:51.887856Z">May 1, 2026</time></p>
+<p class="google-review-no-text">This reviewer left a star rating without a comment.</p>
+</article></div>
+<div class="google-review-controls"><button id="google-review-prev" type="button" aria-label="Previous review">←</button><span id="google-review-position" aria-live="polite">1 of 3</span><button id="google-review-next" type="button" aria-label="Next review">→</button><a href="https://maps.google.com/maps?cid=11567312331092188978" target="_blank" rel="noopener noreferrer">Read on Google ↗<span class="sr-only"> (opens in a new tab)</span></a></div>
+<p class="google-review-note">Latest reviews retrieved September 29, 2026. Text shown as excerpts.</p>
+</aside>
+<button id="google-review-launcher" class="google-review-launcher" type="button" aria-controls="google-review-popup" aria-expanded="false" hidden>Google reviews <span aria-hidden="true">↗</span></button>
+<script src="assets/google-reviews.js" defer></script>
 </body>
 </html>
 
