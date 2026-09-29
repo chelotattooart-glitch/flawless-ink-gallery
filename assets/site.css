@@ -675,3 +675,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .welcome-copy{padding-top:150px}.booking{padding:80px 18px}.form-grid{grid-template-columns:1fr;gap:20px}.form-field{grid-column:1}.consultation-draft{padding:22px}.reviews-section{display:block;padding:65px 22px}.reviews-section .ghost-cta{margin-top:16px}.direct-contact{gap:10px 18px}
 }
 @media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1;transform:none;filter:none;transition:none}.hero-copy>*{animation:none!important}}
+
+/* Review invitation and compact studio map. Stars are decorative, not a rating. */
+.reviews-section{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px)}
+.reviews-copy{min-width:0}
+.reviews-stars{display:flex;gap:7px;width:max-content;margin:22px 0 10px;color:#e8bd69;font-size:30px;line-height:1;text-shadow:0 2px 18px #e8bd6924}
+.reviews-section .reviews-invitation{margin:0 0 22px;color:#c9b58f;font-size:12px;letter-spacing:.08em}
+.reviews-copy .ghost-cta{margin-top:10px;white-space:normal}
+.studio-map-card{min-width:0;overflow:hidden;border:1px solid #35ead72e;border-radius:16px;background:#080e0c;box-shadow:0 18px 55px #0004}
+.studio-map-heading{display:flex;align-items:center;gap:14px;padding:22px 24px}
+.studio-map-pin{width:28px;height:32px;flex-shrink:0;color:var(--aqua)}
+.studio-map-heading .eyebrow{display:block;font-size:8px;letter-spacing:.18em}
+.studio-map-heading h3{margin:7px 0 0;font-size:17px;line-height:1.3;font-weight:600}
+.studio-mini-map{display:block;width:100%;height:260px;border:0;background:#18231e}
+.studio-map-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 24px}
+.studio-map-footer address{font-style:normal;font-size:12px;line-height:1.7;color:#bdc7c1}
+.studio-map-footer a{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:12px;color:var(--aqua);text-underline-offset:4px}
+.studio-map-footer a:hover{text-decoration:underline}
+@media(max-width:900px){.reviews-section{grid-template-columns:1fr}.studio-map-card{width:100%;max-width:620px}.reviews-stars{font-size:28px}}
+@media(max-width:420px){.studio-map-heading{padding:20px}.studio-map-footer{padding:16px 20px;align-items:flex-start;flex-direction:column;gap:6px}.studio-mini-map{height:230px}}
