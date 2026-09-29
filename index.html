@@ -149,32 +149,32 @@
 <div class="form-grid">
 <div class="form-field"><label for="client-name">Your name <span>(required)</span></label><input id="client-name" name="name" autocomplete="name" maxlength="100" required></div>
 <div class="form-field"><label for="client-email">Email <span>(required)</span></label><input id="client-email" name="email" type="email" autocomplete="email" maxlength="150" required></div>
-<div class="form-field"><label for="client-phone">Phone <span>(optional)</span></label><input id="client-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
-<div class="form-field"><label for="preferred-artist">Preferred artist</label><select id="preferred-artist" name="artist"><option value="Help me choose">Help me choose</option><option>Marcelo</option><option>Adrian</option><option>Jmike</option><option>Sergio</option><option>Sammi</option><option>Kimi</option><option>TJ</option></select></div>
-<div class="form-field"><label for="tattoo-placement">Placement <span>(optional)</span></label><input id="tattoo-placement" name="placement" placeholder="e.g. forearm, shoulder" maxlength="100"></div>
-<div class="form-field"><label for="tattoo-size">Approximate size <span>(optional)</span></label><input id="tattoo-size" name="size" placeholder="e.g. 4 × 6 inches" maxlength="100"></div>
+<div class="form-field"><label for="client-phone">Phone <span>(required)</span></label><input id="client-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" required></div>
+<div class="form-field"><label for="preferred-artist">Preferred artist <span>(required)</span></label><select id="preferred-artist" name="artist" required><option value="" disabled selected>Select an artist</option><option value="Help me choose">Help me choose</option><option>Marcelo</option><option>Adrian</option><option>Jmike</option><option>Sergio</option><option>Sammi</option><option>Kimi</option><option>TJ</option></select></div>
+<div class="form-field"><label for="tattoo-placement">Placement <span>(required)</span></label><input id="tattoo-placement" name="placement" placeholder="e.g. forearm, shoulder" maxlength="100" required></div>
+<div class="form-field"><label for="tattoo-size">Approximate size <span>(required)</span></label><input id="tattoo-size" name="size" placeholder="e.g. 4 × 6 inches" maxlength="100" required></div>
 <div class="form-field full-width"><label for="tattoo-idea">Your tattoo idea <span>(required)</span></label><textarea id="tattoo-idea" name="idea" rows="4" placeholder="Subject, style, color or black & grey, and anything meaningful to you…" maxlength="1500" required></textarea></div>
 <div class="form-field full-width"><label for="tattoo-references">Reference link <span>(optional)</span></label><input id="tattoo-references" name="references" type="url" placeholder="https://…" maxlength="500" aria-describedby="reference-help"><p id="reference-help" class="field-help">You can add a link as well as reference photos below.</p></div>
 </div>
 <div class="form-field reference-photos-field">
 <label for="reference-photos">Reference photos <span>(optional · select multiple)</span></label>
 <input id="reference-photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple aria-describedby="reference-photo-help reference-photo-status">
-<p id="reference-photo-help" class="field-help">Add up to 6 photos: JPG, PNG, WebP, GIF, HEIC or HEIF. Up to 5 MB each, 15 MB total. You can add more or remove photos before preparing your email. Photos stay on your device until you send them.</p>
+<p id="reference-photo-help" class="field-help">Add up to 6 photos: JPG, PNG, WebP, GIF, HEIC or HEIF. Up to 5 MB each, 15 MB total. Photos stay on your device. When Gmail opens, attach your chosen photos manually; they cannot be added automatically.</p>
 <p id="reference-photo-status" class="field-help" role="status">No photos selected.</p>
 <ul id="reference-photo-list" class="reference-photo-list" aria-label="Selected reference photos"></ul>
 </div>
-<p id="booking-help" class="form-note">This form prepares an email to flawlessink112@gmail.com. You’ll send it from your email app. Your appointment is only booked once the studio confirms it.</p>
+<p id="booking-help" class="form-note">Submit opens Gmail with your consultation addressed to flawlessink112@gmail.com. Tap Send in Gmail to send it. Your appointment is only booked once the studio confirms it.</p>
 <button class="cta form-submit" type="submit" aria-describedby="booking-help">Submit <span aria-hidden="true">↗</span></button>
 <noscript><p>Please email your tattoo idea directly to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a> or call the studio.</p></noscript>
 </form>
 <div id="consultation-draft" class="consultation-draft" hidden>
-<h3 tabindex="-1" id="draft-heading">Your email draft is ready</h3>
-<p>Choose how to send your consultation. Nothing has been sent yet.</p>
+<h3 tabindex="-1" id="draft-heading">Continue in Gmail</h3>
+<p>Gmail is opening with your consultation. Tap Send there to finish. If Gmail did not open, use the link below.</p>
 <p id="photo-draft-note" class="photo-draft-note" hidden>To include your selected photos, download the email file below and open it in an email app that supports .eml drafts. If your app cannot open it, use Open email app and attach the original photos manually.</p>
 <button id="download-photo-email" class="cta photo-email-button" type="button" hidden>Download email with photos (.eml)</button>
 <p id="photo-download-status" role="status"></p>
 <p class="field-help">Open email app includes your text only; photos must be attached manually with that option.</p>
-<a id="consultation-email-link" class="cta" href="mailto:flawlessink112@gmail.com">Open email app <span aria-hidden="true">↗</span></a>
+<a id="consultation-email-link" class="cta" href="mailto:flawlessink112@gmail.com">Open Gmail in browser <span aria-hidden="true">↗</span></a>
 <details><summary>Email app not opening?</summary><p>Copy the details below and email them to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a>.</p><label for="draft-details">Your consultation details</label><textarea id="draft-details" rows="10" readonly></textarea><button id="copy-consultation" type="button" class="ghost-cta">Copy details</button><p id="copy-status" role="status"></p></details>
 </div>
 <div class="booking-actions direct-contact"><span>Prefer to talk?</span><a href="tel:+17543068422">Call (754) 306-8422</a><a href="sms:+17543068422">Text us</a><a href="mailto:flawlessink112@gmail.com">Email us</a></div>
@@ -355,7 +355,7 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 </dialog>
 <dialog id="lightbox"><button aria-label="Close" class="close">×</button><img alt=""/></dialog>
 
-<script src="assets/site.js" defer></script>
+<script src="assets/site.js?v=gmail-submit-1" defer></script>
 <script src="assets/mobile-navigation.js" defer></script>
 <script src="assets/consultation-references.js" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>

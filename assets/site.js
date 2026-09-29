@@ -75,7 +75,7 @@ document.querySelectorAll('[data-open-portfolio]').forEach(trigger => {
 });
 
 
-// Prepare a consultation email locally; no booking is submitted by this form.
+// Open Gmail directly after validating the consultation; sending happens in Gmail.
 const consultationForm = document.getElementById('consultation-form');
 const draftPanel = document.getElementById('consultation-draft');
 consultationForm.addEventListener('input', () => { draftPanel.hidden = true; });
@@ -84,21 +84,35 @@ consultationForm.addEventListener('submit', event => {
   if (!consultationForm.reportValidity()) return;
   const data = new FormData(consultationForm);
   const value = key => String(data.get(key) || '').trim();
-  if (!value('name') || !value('idea')) {
-    const field = document.getElementById(!value('name') ? 'client-name' : 'tattoo-idea');
-    field.setCustomValidity('Please enter a few details.'); field.reportValidity();
-    field.addEventListener('input', () => field.setCustomValidity(''), {once:true}); return;
+  const requiredFields = {name:'client-name', email:'client-email', phone:'client-phone', artist:'preferred-artist', placement:'tattoo-placement', size:'tattoo-size', idea:'tattoo-idea'};
+  for (const [key, id] of Object.entries(requiredFields)) {
+    if (value(key)) continue;
+    const field = document.getElementById(id);
+    field.setCustomValidity('Please complete this field.'); field.reportValidity();
+    field.addEventListener('input', () => field.setCustomValidity(''), {once:true});
+    return;
   }
   const body = ['Hello Flawless Ink Gallery,', '', 'I would like to discuss a tattoo consultation.', '',
     'Name: ' + value('name'), 'Email: ' + value('email'), 'Phone: ' + (value('phone') || 'Not provided'),
     'Preferred artist: ' + value('artist'), 'Placement: ' + (value('placement') || 'To discuss'),
     'Approximate size: ' + (value('size') || 'To discuss'), '', 'Tattoo idea:', value('idea'), '',
     'Reference link: ' + (value('references') || 'None'), '', 'I understand that the studio must confirm any appointment.'].join('\n');
-  document.getElementById('consultation-email-link').href = 'mailto:flawlessink112@gmail.com?subject=' + encodeURIComponent('Tattoo consultation — ' + value('artist')) + '&body=' + encodeURIComponent(body);
+  const subject = 'Tattoo consultation — ' + value('artist');
+  const query = 'to=flawlessink112%40gmail.com&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  const webUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=flawlessink112%40gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('consultation-email-link').href = webUrl;
   document.getElementById('draft-details').value = body;
   document.getElementById('copy-status').textContent = '';
+  // Recovery options remain available, but there is no second confirmation step.
   draftPanel.hidden = false;
-  document.getElementById('draft-heading').focus();
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (ios) {
+    window.location.href = 'googlegmail:///co?' + query;
+  } else if (/Android/.test(navigator.userAgent)) {
+    window.location.href = 'intent:flawlessink112@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '#Intent;scheme=mailto;package=com.google.android.gm;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
+  } else {
+    window.location.href = webUrl;
+  }
 });
 document.getElementById('copy-consultation').addEventListener('click', async () => {
   const details = document.getElementById('draft-details');
