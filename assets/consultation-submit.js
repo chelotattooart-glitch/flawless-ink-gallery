@@ -3,33 +3,59 @@
   const form = document.getElementById('consultation-form');
   if (!form) return;
   const status = document.getElementById('consultation-status');
-  const button = form.querySelector('[type="submit"]');
-  const names = ['name','email','phone','artist','placement','size','idea','references'];
-  const key = 'flawless-consultation-draft-v6';
+  const link = document.getElementById('consultation-gmail-link');
+  const names = ['name', 'email', 'phone', 'artist', 'placement', 'size', 'idea', 'references'];
+
+  // Recover text from an unfinished submission through the previous flow.
   try {
-    const draft = JSON.parse(sessionStorage.getItem(key));
-    if (draft && Date.now() - draft.savedAt < 3600000) {
-      names.forEach(name => { const field = form.elements.namedItem(name); if (!field.value && typeof draft.values[name] === 'string') field.value = draft.values[name]; });
+    const draft = JSON.parse(sessionStorage.getItem('flawless-ink-consultation'));
+    if (draft && draft.state === 'pending' && draft.values) {
+      names.forEach(name => {
+        const field = form.elements.namedItem(name);
+        if (!field.value && typeof draft.values[name] === 'string') field.value = draft.values[name];
+      });
     }
-    sessionStorage.removeItem(key);
+    sessionStorage.removeItem('flawless-ink-consultation');
   } catch {}
-  window.addEventListener('pageshow', () => {button.disabled = false;status.textContent = '';});
+
+  form.addEventListener('input', () => { link.hidden = true; status.textContent = ''; });
   form.addEventListener('submit', event => {
-    if (!form.reportValidity() || form.elements.namedItem('_honey').value) {event.preventDefault();return;}
-    const values = {};
-    for (const name of names) {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const values = Object.fromEntries(names.map(name => [name, form.elements.namedItem(name).value.trim()]));
+    for (const name of names.filter(name => name !== 'references')) {
+      if (values[name]) continue;
       const field = form.elements.namedItem(name);
-      values[name] = field.value.trim();
-      if (name !== 'references' && !values[name]) {
-        event.preventDefault();
-        field.setCustomValidity('Please complete this field.');
-        field.reportValidity();
-        field.addEventListener('input', () => field.setCustomValidity(''), {once:true});
-        return;
-      }
+      field.setCustomValidity('Please complete this field.');
+      field.reportValidity();
+      field.addEventListener('input', () => field.setCustomValidity(''), {once: true});
+      return;
     }
-    try {sessionStorage.setItem(key, JSON.stringify({savedAt:Date.now(),values}));} catch {}
-    status.textContent = 'Continuing to the form service. Complete any verification on the next page. Your consultation is not confirmed yet.';
-    // Allow the browser's normal POST, including the provider's CAPTCHA/activation flow.
+    if (form.elements.namedItem('_honey').value) return;
+    const body = [
+      'Hello Flawless Ink Gallery,', '', 'I would like to discuss a tattoo consultation.', '',
+      'Name: ' + values.name, 'Email: ' + values.email, 'Phone: ' + values.phone,
+      'Preferred artist: ' + values.artist, 'Placement: ' + values.placement,
+      'Approximate size: ' + values.size, '', 'Tattoo idea:', values.idea, '',
+      'Reference link: ' + (values.references || 'None'), '',
+      'I understand that the studio must confirm any appointment.'
+    ].join('\n');
+    const url = new URL('https://mail.google.com/mail/');
+    url.searchParams.set('view', 'cm');
+    url.searchParams.set('fs', '1');
+    url.searchParams.set('to', 'flawlessink112@gmail.com');
+    url.searchParams.set('su', 'Tattoo consultation — ' + values.artist);
+    url.searchParams.set('body', body);
+    link.href = url.href;
+    link.hidden = false;
+    status.textContent = 'Your consultation email is ready in Gmail. Review it, attach any reference photos, and click Send in Gmail to finish. Your details remain here.';
+    // Open during the user's click; fall back to the same tab if pop-ups are blocked.
+    const compose = window.open('about:blank', '_blank');
+    if (compose) {
+      compose.opener = null;
+      compose.location.replace(url.href);
+    } else {
+      window.location.assign(url.href);
+    }
   });
 })();
