@@ -145,7 +145,11 @@
 <p class="eyebrow">LET’S PLAN YOUR TATTOO</p>
 <h2 id="booking-title">Your idea.<br/><em>Our next conversation.</em></h2>
 <p>Tell us what you have in mind. Choose an artist or let us help you find the right fit.</p>
-<form id="consultation-form" class="consultation-form" enctype="multipart/form-data">
+<form id="consultation-form" class="consultation-form" action="https://formsubmit.co/flawlessink112@gmail.com" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="_subject" value="Tattoo consultation">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://www.flawlessinkgallery.com/consultation-sent.html">
+<input type="hidden" name="_url" value="https://www.flawlessinkgallery.com/">
 <div hidden aria-hidden="true"><label>Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"></label></div>
 <div class="form-grid">
 <div class="form-field"><label for="client-name">Your name <span>(required)</span></label><input id="client-name" name="name" autocomplete="name" maxlength="100" required></div>
@@ -164,7 +168,7 @@
 <p id="reference-photo-status" class="field-help" role="status">No photos selected.</p>
 <ul id="reference-photo-list" class="reference-photo-list" aria-label="Selected reference photos"></ul>
 </div>
-<p id="booking-help" class="form-note">Submit sends your consultation and optional photos securely through FormSubmit to flawlessink112@gmail.com without leaving this page. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
+<p id="booking-help" class="form-note">Submit sends your consultation and optional photos to flawlessink112@gmail.com. Complete any security check to finish sending; you’ll then return to a confirmation page. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
 <button class="cta form-submit" type="submit" aria-describedby="booking-help">Submit <span aria-hidden="true">↗</span></button>
 <p id="consultation-status" class="form-note" role="status" aria-live="polite"></p>
 <noscript><p>Please email your tattoo idea directly to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a> or call the studio.</p></noscript>
@@ -348,9 +352,10 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 </dialog>
 <dialog id="lightbox"><button aria-label="Close" class="close">×</button><img alt=""/></dialog>
 
-<script src="assets/site.js?v=direct-submit-1" defer></script>
+<script src="assets/site.js?v=native-consultation-2" defer></script>
 <script src="assets/mobile-navigation.js" defer></script>
 <script src="assets/consultation-references.js?v=direct-submit-1" defer></script>
+<script src="assets/consultation-submit.js?v=native-consultation-2" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>
 
 <aside id="google-review-popup" class="google-review-popup" aria-labelledby="google-review-heading" hidden>
@@ -395,4 +400,5 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 <script src="assets/artist-navigation.js" defer></script>
 </body>
 </html>
+
 
