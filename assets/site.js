@@ -98,24 +98,36 @@ consultationForm.addEventListener('submit', event => {
     'Approximate size: ' + (value('size') || 'To discuss'), '', 'Tattoo idea:', value('idea'), '',
     'Reference link: ' + (value('references') || 'None'), '', 'I understand that the studio must confirm any appointment.'].join('\n');
   const subject = 'Tattoo consultation — ' + value('artist');
-  const query = 'to=flawlessink112%40gmail.com&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   const webUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=flawlessink112%40gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   document.getElementById('consultation-email-link').href = webUrl;
   document.getElementById('draft-details').value = body;
   document.getElementById('copy-status').textContent = '';
-  // Keep the old recovery panel hidden and leave the shop at Home.
-  // This is a handoff, not confirmation that Gmail sent the message.
   draftPanel.hidden = true;
+  // Request a separate compose window during the user's Submit gesture.
+  const width = Math.min(720, window.screen.availWidth);
+  const height = Math.min(760, window.screen.availHeight);
+  const popup = window.open('about:blank', '_blank',
+    'popup=yes,width=' + width + ',height=' + height + ',resizable=yes,scrollbars=yes');
+  if (!popup) {
+    let status = document.getElementById('gmail-popup-status');
+    if (!status) {
+      status = document.createElement('p');
+      status.id = 'gmail-popup-status';
+      status.className = 'form-note';
+      status.setAttribute('role', 'alert');
+      consultationForm.append(status);
+    }
+    status.textContent = 'Please allow pop-ups for this site, then tap Submit again to open Gmail. Your details are still here.';
+    return;
+  }
+  popup.opener = null;
+  popup.location.replace(webUrl);
+  const status = document.getElementById('gmail-popup-status');
+  if (status) status.textContent = '';
+  // Gmail handles sending; the original shop window stays on Home.
   window.history.replaceState(window.history.state, '', '#home');
   window.scrollTo({top:0, left:0, behavior:'instant'});
-  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  if (ios) {
-    window.location.href = 'googlegmail:///co?' + query;
-  } else if (/Android/.test(navigator.userAgent)) {
-    window.location.href = 'intent:flawlessink112@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '#Intent;scheme=mailto;package=com.google.android.gm;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
-  } else {
-    window.open(webUrl, '_blank', 'noopener,noreferrer');
-  }
+
 });
 document.getElementById('copy-consultation').addEventListener('click', async () => {
   const details = document.getElementById('draft-details');
