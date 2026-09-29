@@ -155,12 +155,17 @@
 <div class="form-field"><label for="tattoo-placement">Placement <span>(required)</span></label><input id="tattoo-placement" name="placement" placeholder="e.g. forearm, shoulder" maxlength="100" required></div>
 <div class="form-field"><label for="tattoo-size">Approximate size <span>(required)</span></label><input id="tattoo-size" name="size" placeholder="e.g. 4 × 6 inches" maxlength="100" required></div>
 <div class="form-field full-width"><label for="tattoo-idea">Your tattoo idea <span>(required)</span></label><textarea id="tattoo-idea" name="idea" rows="4" placeholder="Subject, style, color or black & grey, and anything meaningful to you…" maxlength="1500" required></textarea></div>
-<div class="form-field full-width"><label for="tattoo-references">Reference link <span>(optional)</span></label><input id="tattoo-references" name="references" type="url" placeholder="https://…" maxlength="500" aria-describedby="reference-help"><p id="reference-help" class="field-help">Add a reference link here. Attach any reference photos directly in Gmail before sending.</p></div>
+<div class="form-field full-width"><label for="tattoo-references">Reference link <span>(optional)</span></label><input id="tattoo-references" name="references" type="url" placeholder="https://…" maxlength="500" aria-describedby="reference-help"><p id="reference-help" class="field-help">Add a reference link here. Attach any reference photos in your email app before sending.</p></div>
 </div>
-<p id="booking-help" class="form-note">Continue opens Gmail with your consultation details filled in. Review the email, attach any reference photos, and click Send in Gmail. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
+<p id="booking-help" class="form-note">Continue attempts to open the Gmail app on your phone with your consultation details filled in. Gmail must be installed. On a computer, Gmail opens in your browser. Review the email, attach any reference photos, and tap Send. If no app opens, copy your consultation below and paste it into your email. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
 <button class="cta form-submit" type="submit" aria-describedby="booking-help">Continue in Gmail <span aria-hidden="true">↗</span></button>
 <p id="consultation-status" class="form-note" role="status" aria-live="polite"></p>
-<a id="consultation-gmail-link" class="text-link" target="_blank" rel="noopener noreferrer" hidden>Open your consultation in Gmail ↗</a>
+<div id="consultation-email-fallback" hidden>
+<p class="form-note">If your email app did not open, copy the message below and send it to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a>. Your request is sent only when you tap Send in your email app.</p>
+<a id="consultation-email-link" class="text-link">Use another email app ↗</a>
+<div class="form-field full-width"><label for="consultation-message">Your consultation message</label><textarea id="consultation-message" rows="9" readonly></textarea></div>
+<button id="consultation-copy" class="ghost-cta" type="button">Copy consultation</button>
+</div>
 <noscript><p>Please email your tattoo idea directly to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a> or call the studio.</p></noscript>
 </form>
 
@@ -344,7 +349,7 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 
 <script src="assets/site.js?v=native-consultation-2" defer></script>
 <script src="assets/mobile-navigation.js" defer></script>
-<script src="assets/consultation-submit.js?v=gmail-consultation-7" defer></script>
+<script src="assets/consultation-submit.js?v=gmail-app-9" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>
 
 <aside id="google-review-popup" class="google-review-popup" aria-labelledby="google-review-heading" hidden>

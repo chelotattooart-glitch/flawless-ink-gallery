@@ -3,7 +3,19 @@
   const form = document.getElementById('consultation-form');
   if (!form) return;
   const status = document.getElementById('consultation-status');
-  const link = document.getElementById('consultation-gmail-link');
+  const link = document.getElementById('consultation-email-link');
+  const fallback = document.getElementById('consultation-email-fallback');
+  const message = document.getElementById('consultation-message');
+  const copy = document.getElementById('consultation-copy');
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(message.value);
+      status.textContent = 'Consultation copied. Paste it into your email and send it to flawlessink112@gmail.com.';
+    } catch {
+      message.focus(); message.select(); message.setSelectionRange(0, message.value.length);
+      status.textContent = 'Select and copy the message below, then paste it into your email and send it to flawlessink112@gmail.com.';
+    }
+  });
   const names = ['name', 'email', 'phone', 'artist', 'placement', 'size', 'idea', 'references'];
 
   // Recover text from an unfinished submission through the previous flow.
@@ -18,7 +30,7 @@
     sessionStorage.removeItem('flawless-ink-consultation');
   } catch {}
 
-  form.addEventListener('input', () => { link.hidden = true; status.textContent = ''; });
+  form.addEventListener('input', () => { fallback.hidden = true; status.textContent = ''; });
   form.addEventListener('submit', event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
@@ -40,22 +52,24 @@
       'Reference link: ' + (values.references || 'None'), '',
       'I understand that the studio must confirm any appointment.'
     ].join('\n');
-    const url = new URL('https://mail.google.com/mail/');
-    url.searchParams.set('view', 'cm');
-    url.searchParams.set('fs', '1');
-    url.searchParams.set('to', 'flawlessink112@gmail.com');
-    url.searchParams.set('su', 'Tattoo consultation — ' + values.artist);
-    url.searchParams.set('body', body);
-    link.href = url.href;
-    link.hidden = false;
-    status.textContent = 'Your consultation email is ready in Gmail. Review it, attach any reference photos, and click Send in Gmail to finish. Your details remain here.';
-    // Open during the user's click; fall back to the same tab if pop-ups are blocked.
-    const compose = window.open('about:blank', '_blank');
-    if (compose) {
-      compose.opener = null;
-      compose.location.replace(url.href);
+    const subject = 'Tattoo consultation — ' + values.artist;
+    const url = 'mailto:flawlessink112@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    link.href = url;
+    message.value = 'To: flawlessink112@gmail.com\nSubject: ' + subject + '\n\n' + body;
+    fallback.hidden = false;
+    status.textContent = 'Your consultation is prepared. Send it from your email app to finish. If no app opens, copy the message below. This page cannot confirm email delivery.';
+    const params = 'to=' + encodeURIComponent('flawlessink112@gmail.com') + '&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    let gmailURL;
+    if (isIOS) {
+      gmailURL = 'googlegmail:///co?' + params;
+    } else if (/Android/i.test(ua)) {
+      gmailURL = 'intent:flawlessink112@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '#Intent;scheme=mailto;action=android.intent.action.SENDTO;package=com.google.android.gm;end';
     } else {
-      window.location.assign(url.href);
+      gmailURL = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('flawlessink112@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
+    status.textContent = 'Your message is prepared. If Gmail opens, review it and tap Send. If Gmail is unavailable, use another email app or copy your consultation below. This page cannot confirm delivery.';
+    window.location.assign(gmailURL);
   });
 })();
