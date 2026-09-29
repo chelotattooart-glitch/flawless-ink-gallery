@@ -45,6 +45,6 @@
   document.getElementById('google-review-next').addEventListener('click', () => select(1));
   if (!seen) setTimeout(() => {
     const editing = document.activeElement && document.activeElement.matches('input,textarea,select,[contenteditable="true"]');
-    if (!seen && !document.hidden && !document.querySelector('dialog[open]') && !editing) open(false);
+    if (!seen && !window.matchMedia('(max-width: 1050px)').matches && !document.hidden && !document.querySelector('dialog[open]') && !editing) open(false);
   }, 8000);
 })();

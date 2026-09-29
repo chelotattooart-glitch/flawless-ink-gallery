@@ -772,3 +772,49 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .nav-shop-logo{width:68px;height:68px;border-radius:50%;border:1px solid #35ead755;background:#080e0c;box-shadow:0 0 16px #35ead714}
 .nav-shop-logo img{width:117.65%;left:-8.82%;top:-5.88%}
 @media(max-width:1050px){.nav-shop-logo{width:48px;height:48px}}
+
+/* Responsive disclosure navigation and iPhone spacing. */
+.mobile-menu-toggle{display:none}
+@media(max-width:1050px){
+ .nav{grid-template-columns:minmax(0,1fr) 44px 44px;gap:10px;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) 10px max(18px,env(safe-area-inset-left,0px));background:#080e0cf5;border-bottom:1px solid #35ead726;backdrop-filter:blur(18px);z-index:40}
+ .nav>.brand{grid-column:1;grid-row:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:3px;min-height:44px;min-width:0;font-size:12px;line-height:1.25;letter-spacing:.14em;white-space:normal}
+ .nav>.brand span{font-size:8px;letter-spacing:.22em}
+ .nav>.nav-shop-logo{grid-column:2;grid-row:1;width:42px;height:42px}
+ .mobile-menu-toggle{grid-column:3;grid-row:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;padding:10px;border:1px solid #35ead744;border-radius:12px;background:#35ead70a;color:var(--aqua);cursor:pointer}
+ .mobile-menu-toggle span{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;transition:transform .18s ease,opacity .18s ease}
+ .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+ .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+ .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ .nav>nav{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;overflow:visible}
+ .nav.nav-enhanced>nav{position:absolute;top:calc(100% + 8px);left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));width:auto;max-height:calc(100dvh - 96px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:5px;padding:12px;border:1px solid #35ead73d;border-radius:20px;background:#0b1411;box-shadow:0 20px 60px #0009}
+ .nav.nav-enhanced>nav:not([hidden]){animation:mobileNavReveal .18s ease-out}
+ .nav.nav-enhanced>nav a,.nav.nav-enhanced>nav a:not(.book){display:flex;justify-content:space-between;align-items:center;min-height:54px;flex-shrink:0;padding:14px 16px;border-radius:12px;font-size:16px;letter-spacing:.01em;text-transform:none;line-height:1.5;white-space:normal;opacity:1}
+ .nav.nav-enhanced>nav a::after{content:"↗";font-size:16px;color:var(--aqua);margin-left:16px}
+ .nav.nav-enhanced>nav a:hover,.nav.nav-enhanced>nav a:focus-visible{background:#35ead70e}
+ .nav.nav-enhanced>nav .book{border:1px solid #35ead755;background:#35ead70b;color:var(--aqua)}
+ html{scroll-padding-top:calc(84px + env(safe-area-inset-top,0px))}
+ section[id]{scroll-margin-top:0}
+ .welcome-copy{padding-top:calc(110px + env(safe-area-inset-top,0px))}
+ body.mobile-nav-open .google-review-popup,body.mobile-nav-open .google-review-launcher{visibility:hidden}
+}
+@keyframes mobileNavReveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media(max-width:600px){
+ .hero h1{font-size:clamp(48px,14vw,72px);line-height:1.02}
+ .welcome-copy{width:100%;padding-right:22px;padding-left:22px;padding-bottom:48px}
+ .welcome-copy .lead{font-size:16px;line-height:1.75}
+ .welcome-actions{display:grid;grid-template-columns:1fr;gap:10px;margin-top:24px}
+ .welcome-actions a{margin-top:0;min-height:50px;justify-content:space-between}
+ .artist-strip-section{padding-inline:18px}
+ .artist-dialog-body,.deal-claim-body{padding:20px}
+ .artist-dialog-about p{font-size:15px;line-height:1.85;overflow-wrap:anywhere}
+ .booking{padding-inline:16px}.consultation-form{padding:20px 16px}
+ .consultation-form input,.consultation-form select,.consultation-form textarea,#reference-photos{font-size:16px}
+ .consultation-draft{padding:22px 16px;overflow-wrap:anywhere}
+ .consultation-draft>.cta,.consultation-draft>.photo-email-button{width:100%;justify-content:center;white-space:normal;text-align:center}
+ .deal-claim-actions{flex-direction:column}.deal-claim-actions>a{width:100%;justify-content:center;min-height:48px}
+ .google-review-popup{max-height:calc(75dvh - env(safe-area-inset-bottom,0px))}
+ .google-review-launcher{bottom:calc(14px + env(safe-area-inset-bottom,0px));font-size:11px;padding:10px 14px}
+ .contact-links{min-width:0;overflow-wrap:anywhere}
+ footer{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){.nav.nav-enhanced>nav:not([hidden]){animation:none}.mobile-menu-toggle span{transition:none}}

@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
 <meta content="#050706" name="theme-color"/>
 <title>Flawless Ink Gallery</title>
 <meta content="Flawless Ink Gallery — custom tattoo studio and artist portfolio." name="description"/>
@@ -11,13 +11,14 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/site.css?v=photo-references-1"/>
+<link rel="stylesheet" href="assets/site.css?v=iphone-nav-1"/>
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}.form-submit{display:none}</style></noscript>
 </head>
 <body>
 <header class="nav">
 <a class="brand" href="#top">FLAWLESS <span>INK GALLERY</span></a>
-<nav aria-label="Main navigation">
+<button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false" hidden><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+<nav id="primary-navigation" aria-label="Main navigation">
 <a href="#home">Home</a>
 <a href="#artist">Artists</a>
 <a class="book" href="#book">Book a consultation</a>
@@ -351,6 +352,7 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 <dialog id="lightbox"><button aria-label="Close" class="close">×</button><img alt=""/></dialog>
 
 <script src="assets/site.js" defer></script>
+<script src="assets/mobile-navigation.js" defer></script>
 <script src="assets/consultation-references.js" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>
 
