@@ -119,9 +119,13 @@ consultationForm.addEventListener('submit', async event => {
       method:'POST', headers:{Accept:'application/json'}, body:data, signal:controller.signal
     });
     const result = await response.json();
-    if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Not accepted');
     if (/activat|confirm.*email/i.test(String(result.message || ''))) {
-      status.textContent = 'The studio’s contact form is awaiting activation. Please contact flawlessink112@gmail.com directly for now. Your details are still here.';
+      status.textContent = 'This form needs activation. The studio must open the FormSubmit email sent to flawlessink112@gmail.com and click Activate Form. Please check Spam too. Your details are still here.';
+      return;
+    }
+    if (!response.ok || !(result.success === true || result.success === 'true')) {
+      const reason = typeof result.message === 'string' ? result.message.replace(/<[^>]*>/g, '').slice(0, 300) : '';
+      status.textContent = 'Delivery was not confirmed' + (reason ? ': ' + reason : ' (service response ' + response.status + ').') + ' Your details are still here.';
       return;
     }
     consultationForm.reset();
