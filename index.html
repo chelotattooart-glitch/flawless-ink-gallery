@@ -145,7 +145,8 @@
 <p class="eyebrow">LET’S PLAN YOUR TATTOO</p>
 <h2 id="booking-title">Your idea.<br/><em>Our next conversation.</em></h2>
 <p>Tell us what you have in mind. Choose an artist or let us help you find the right fit.</p>
-<form id="consultation-form" class="consultation-form">
+<form id="consultation-form" class="consultation-form" enctype="multipart/form-data">
+<div hidden aria-hidden="true"><label>Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"></label></div>
 <div class="form-grid">
 <div class="form-field"><label for="client-name">Your name <span>(required)</span></label><input id="client-name" name="name" autocomplete="name" maxlength="100" required></div>
 <div class="form-field"><label for="client-email">Email <span>(required)</span></label><input id="client-email" name="email" type="email" autocomplete="email" maxlength="150" required></div>
@@ -159,24 +160,16 @@
 <div class="form-field reference-photos-field">
 <label for="reference-photos">Reference photos <span>(optional · select multiple)</span></label>
 <input id="reference-photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple aria-describedby="reference-photo-help reference-photo-status">
-<p id="reference-photo-help" class="field-help">Add up to 6 photos: JPG, PNG, WebP, GIF, HEIC or HEIF. Up to 5 MB each, 15 MB total. Photos stay on your device. When Gmail opens, attach your chosen photos manually; they cannot be added automatically.</p>
+<p id="reference-photo-help" class="field-help">Add up to 6 photos: JPG, PNG, WebP, GIF, HEIC or HEIF. Up to 5 MB each, 10 MB total. Selected photos are sent with your consultation when you tap Submit.</p>
 <p id="reference-photo-status" class="field-help" role="status">No photos selected.</p>
 <ul id="reference-photo-list" class="reference-photo-list" aria-label="Selected reference photos"></ul>
 </div>
-<p id="booking-help" class="form-note">Submit opens Gmail with your consultation addressed to flawlessink112@gmail.com. Tap Send in Gmail to send it. Your appointment is only booked once the studio confirms it.</p>
+<p id="booking-help" class="form-note">Submit sends your consultation and optional photos securely through FormSubmit to flawlessink112@gmail.com without leaving this page. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
 <button class="cta form-submit" type="submit" aria-describedby="booking-help">Submit <span aria-hidden="true">↗</span></button>
+<p id="consultation-status" class="form-note" role="status" aria-live="polite"></p>
 <noscript><p>Please email your tattoo idea directly to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a> or call the studio.</p></noscript>
 </form>
-<div id="consultation-draft" class="consultation-draft" hidden>
-<h3 tabindex="-1" id="draft-heading">Continue in Gmail</h3>
-<p>Gmail is opening with your consultation. Tap Send there to finish. If Gmail did not open, use the link below.</p>
-<p id="photo-draft-note" class="photo-draft-note" hidden>To include your selected photos, download the email file below and open it in an email app that supports .eml drafts. If your app cannot open it, use Open email app and attach the original photos manually.</p>
-<button id="download-photo-email" class="cta photo-email-button" type="button" hidden>Download email with photos (.eml)</button>
-<p id="photo-download-status" role="status"></p>
-<p class="field-help">Open email app includes your text only; photos must be attached manually with that option.</p>
-<a id="consultation-email-link" class="cta" href="mailto:flawlessink112@gmail.com">Open Gmail in browser <span aria-hidden="true">↗</span></a>
-<details><summary>Email app not opening?</summary><p>Copy the details below and email them to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a>.</p><label for="draft-details">Your consultation details</label><textarea id="draft-details" rows="10" readonly></textarea><button id="copy-consultation" type="button" class="ghost-cta">Copy details</button><p id="copy-status" role="status"></p></details>
-</div>
+
 <div class="booking-actions direct-contact"><span>Prefer to talk?</span><a href="tel:+17543068422">Call (754) 306-8422</a><a href="sms:+17543068422">Text us</a><a href="mailto:flawlessink112@gmail.com">Email us</a></div>
 </div>
 </section>
@@ -355,9 +348,9 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 </dialog>
 <dialog id="lightbox"><button aria-label="Close" class="close">×</button><img alt=""/></dialog>
 
-<script src="assets/site.js?v=gmail-submit-1" defer></script>
+<script src="assets/site.js?v=direct-submit-1" defer></script>
 <script src="assets/mobile-navigation.js" defer></script>
-<script src="assets/consultation-references.js" defer></script>
+<script src="assets/consultation-references.js?v=direct-submit-1" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>
 
 <aside id="google-review-popup" class="google-review-popup" aria-labelledby="google-review-heading" hidden>

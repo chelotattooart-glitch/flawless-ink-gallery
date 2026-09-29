@@ -1,15 +1,7 @@
-# Consultation reference photos
+# Direct consultation delivery
 
-Customers can select up to six JPEG, PNG, WebP, GIF, HEIC or HEIF photos,
-maximum 5 MB per photo and 15 MB total. Selection, preview and removal happen
-locally; nothing is uploaded to a server or stored in this repository.
+The form submits to https://formsubmit.co/ajax/flawlessink112@gmail.com using multipart FormData. It stays on the site; no Gmail window opens. The owner must activate this form through the FormSubmit email sent to flawlessink112@gmail.com on the first submission. Until activation is verified, do not treat the integration as production-verified.
 
-The existing form still prepares an email. The additional .eml download embeds
-selected files as MIME attachments and addresses the draft to
-flawlessink112@gmail.com. Customers need a compatible email app to open and send
-the draft. Open email app (mailto) only includes text: users must attach originals
-manually through that option. There is no automatic submission or booking.
+Required: name, email, phone, artist, placement, size, idea. Optional: reference link and up to six photos, max 5 MiB per file and 10 MB total. Photos are sent to FormSubmit as attachment1 through attachment6. Test a submission with photos and confirm receipt in the inbox after activation.
 
-Verified the MIME output with two attachments, exact decoded bytes, Unicode
-text and subject, recipient and unsent-draft header. End-to-end email delivery
-and browser visual QA were not available in this environment.
+A success response indicates service acceptance, not confirmed inbox delivery. Failed/unconfirmed requests preserve the form. Do not auto-retry on timeouts. Honeypot and provider spam filtering are used; CAPTCHA is disabled for the AJAX flow. No service secrets are stored in client code.

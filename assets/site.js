@@ -75,13 +75,12 @@ document.querySelectorAll('[data-open-portfolio]').forEach(trigger => {
 });
 
 
-// Open Gmail directly after validating the consultation; sending happens in Gmail.
+// Send to the form delivery service without opening another page.
 const consultationForm = document.getElementById('consultation-form');
-const draftPanel = document.getElementById('consultation-draft');
-consultationForm.addEventListener('input', () => { draftPanel.hidden = true; });
-consultationForm.addEventListener('submit', event => {
+let consultationSending = false;
+consultationForm.addEventListener('submit', async event => {
   event.preventDefault();
-  if (!consultationForm.reportValidity()) return;
+  if (consultationSending || !consultationForm.reportValidity()) return;
   const data = new FormData(consultationForm);
   const value = key => String(data.get(key) || '').trim();
   const requiredFields = {name:'client-name', email:'client-email', phone:'client-phone', artist:'preferred-artist', placement:'tattoo-placement', size:'tattoo-size', idea:'tattoo-idea'};
@@ -92,45 +91,64 @@ consultationForm.addEventListener('submit', event => {
     field.addEventListener('input', () => field.setCustomValidity(''), {once:true});
     return;
   }
-  const body = ['Hello Flawless Ink Gallery,', '', 'I would like to discuss a tattoo consultation.', '',
-    'Name: ' + value('name'), 'Email: ' + value('email'), 'Phone: ' + (value('phone') || 'Not provided'),
-    'Preferred artist: ' + value('artist'), 'Placement: ' + (value('placement') || 'To discuss'),
-    'Approximate size: ' + (value('size') || 'To discuss'), '', 'Tattoo idea:', value('idea'), '',
-    'Reference link: ' + (value('references') || 'None'), '', 'I understand that the studio must confirm any appointment.'].join('\n');
-  const subject = 'Tattoo consultation — ' + value('artist');
-  const webUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=flawlessink112%40gmail.com&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  document.getElementById('consultation-email-link').href = webUrl;
-  document.getElementById('draft-details').value = body;
-  document.getElementById('copy-status').textContent = '';
-  draftPanel.hidden = true;
-  // Request a separate compose window during the user's Submit gesture.
-  const width = Math.min(720, window.screen.availWidth);
-  const height = Math.min(760, window.screen.availHeight);
-  const popup = window.open('about:blank', '_blank',
-    'popup=yes,width=' + width + ',height=' + height + ',resizable=yes,scrollbars=yes');
-  if (!popup) {
-    let status = document.getElementById('gmail-popup-status');
-    if (!status) {
-      status = document.createElement('p');
-      status.id = 'gmail-popup-status';
-      status.className = 'form-note';
-      status.setAttribute('role', 'alert');
-      consultationForm.append(status);
-    }
-    status.textContent = 'Please allow pop-ups for this site, then tap Submit again to open Gmail. Your details are still here.';
+  if (value('_honey')) return;
+  const status = document.getElementById('consultation-status');
+  const button = consultationForm.querySelector('[type="submit"]');
+  const photos = window.consultationPhotos ? window.consultationPhotos.getFiles() : [];
+  if (photos.length > 6 || photos.reduce((total, file) => total + file.size, 0) > 10000000) {
+    status.textContent = 'Please choose up to 6 photos totaling no more than 10 MB.';
     return;
   }
-  popup.opener = null;
-  popup.location.replace(webUrl);
-  const status = document.getElementById('gmail-popup-status');
-  if (status) status.textContent = '';
-  // Gmail handles sending; the original shop window stays on Home.
-  window.history.replaceState(window.history.state, '', '#home');
-  window.scrollTo({top:0, left:0, behavior:'instant'});
-
-});
-document.getElementById('copy-consultation').addEventListener('click', async () => {
-  const details = document.getElementById('draft-details');
-  try { await navigator.clipboard.writeText(details.value); document.getElementById('copy-status').textContent = 'Copied. Paste these details into your email.'; }
-  catch { details.focus(); details.select(); document.getElementById('copy-status').textContent = 'Select and copy the highlighted details, then paste them into your email.'; }
+  photos.forEach((file, index) => data.append('attachment' + (index + 1), file, file.name));
+  data.set('_subject', 'Tattoo consultation — ' + value('artist'));
+  data.set('_template', 'table');
+  data.set('_url', window.location.origin + window.location.pathname);
+  data.set('_captcha', 'false');
+  consultationSending = true;
+  const originalLabel = button.innerHTML;
+  button.disabled = true; button.textContent = 'Sending…';
+  consultationForm.setAttribute('aria-busy', 'true');
+  const controls = Array.from(consultationForm.querySelectorAll('input, select, textarea, button'));
+  const disabledBefore = controls.map(control => control.disabled);
+  controls.forEach(control => { control.disabled = true; });
+  status.textContent = 'Sending your consultation…';
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/flawlessink112@gmail.com', {
+      method:'POST', headers:{Accept:'application/json'}, body:data, signal:controller.signal
+    });
+    const result = await response.json();
+    if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Not accepted');
+    if (/activat|confirm.*email/i.test(String(result.message || ''))) {
+      status.textContent = 'The studio’s contact form is awaiting activation. Please contact flawlessink112@gmail.com directly for now. Your details are still here.';
+      return;
+    }
+    consultationForm.reset();
+    if (window.consultationPhotos) window.consultationPhotos.clear();
+    status.textContent = 'Your consultation was accepted for delivery. The studio will contact you to confirm availability.';
+    let homeStatus = document.getElementById('consultation-home-status');
+    if (!homeStatus) {
+      homeStatus = document.createElement('p');
+      homeStatus.id = 'consultation-home-status';
+      homeStatus.className = 'form-note';
+      homeStatus.setAttribute('role', 'status');
+      homeStatus.setAttribute('tabindex', '-1');
+      document.querySelector('.welcome-copy').append(homeStatus);
+    }
+    homeStatus.textContent = 'Thank you! Your consultation was accepted for delivery. We’ll contact you to discuss your tattoo.';
+    window.history.replaceState(window.history.state, '', '#home');
+    homeStatus.focus({preventScroll:true});
+    window.scrollTo({top:0, left:0, behavior:'instant'});
+  } catch (error) {
+    status.textContent = error.name === 'AbortError'
+      ? 'Delivery could not be confirmed in time. Your details are still here. Please contact the studio before retrying to avoid duplicates.'
+      : 'We could not confirm delivery. Your details are still here. Please try again or email flawlessink112@gmail.com.';
+  } finally {
+    clearTimeout(timeout);
+    controls.forEach((control, index) => { control.disabled = disabledBefore[index]; });
+    button.disabled = false; button.innerHTML = originalLabel;
+    consultationForm.removeAttribute('aria-busy');
+    consultationSending = false;
+  }
 });
