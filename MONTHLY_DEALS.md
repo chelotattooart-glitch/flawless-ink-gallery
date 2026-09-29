@@ -1,7 +1,10 @@
 # Monthly studio coupons
 
-The Deals section is in index.html, linked next to Location. Current offer:
-two tattoo sessions for USD 2,500 total. Its booking offer expires at the end of
+The Deals section is in index.html, linked next to Location. Current offers:
+- Two full-day tattoo sessions for USD 2,500 total.
+- One half-day tattoo session for USD 1,000.
+
+Both booking offers expire at the end of
 September 30, 2026 in America/New_York (exclusive cutoff October 1 at 00:00 EDT).
 
 Each .deal-coupon must have an explicit, timezone-qualified data-expires-at

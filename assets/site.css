@@ -731,3 +731,5 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:760px){.deals-section{padding:65px 22px}.deal-coupon{grid-template-columns:minmax(0,1fr)}.deal-coupon-stub{border-left:0;border-top:2px dashed #35ead744;padding:30px 22px}.deal-price{font-size:60px}.nav nav{overflow-x:auto;justify-content:flex-start;gap:16px}.nav nav a{flex-shrink:0;white-space:nowrap}.nav nav .book{white-space:nowrap}}
 
 .deal-expiration{color:#e8bd69;font-size:12px;line-height:1.7;margin:22px 0 0}.deals-empty{padding:28px;border:1px dashed #35ead744;border-radius:14px;color:var(--muted);line-height:1.8}.deals-empty a{display:block;margin-top:12px;color:var(--aqua)}
+
+.deal-coupon + .deal-coupon{margin-top:24px}
