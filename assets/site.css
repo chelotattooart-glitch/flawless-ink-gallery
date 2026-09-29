@@ -762,3 +762,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .welcome-copy{padding-top:150px}
 }
 @media(max-width:420px){.nav{padding-inline:14px}.nav>nav{justify-content:flex-start;gap:14px}}
+
+/* Local reference-photo selection and email attachment draft. */
+.reference-photos-field{margin-top:24px}.reference-photo-list{list-style:none;padding:0;margin:18px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.reference-photo-list li{min-width:0;padding:10px;border:1px solid var(--line);border-radius:10px;background:#080e0c}.reference-preview{position:relative;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border-radius:6px;background:#101a16}.reference-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.reference-preview span{font-size:10px;color:var(--muted);padding:8px;text-align:center}.booking .reference-photo-list p{font-size:11px;line-height:1.5;overflow-wrap:anywhere;margin:10px 0 6px;max-width:none}.reference-photo-list button{min-height:44px;padding:8px 12px;border:1px solid #ffffff38;border-radius:6px;background:transparent;color:var(--ink);font:12px Manrope,system-ui;cursor:pointer}
+#reference-photos{font-size:13px}#reference-photos::file-selector-button{padding:10px 12px;margin-right:12px;border:1px solid #35ead755;border-radius:6px;background:#0c211d;color:var(--ink);cursor:pointer}
+.photo-email-button{font:600 13px/1.5 Manrope,system-ui;color:var(--ink);cursor:pointer}.photo-email-button:disabled{opacity:.6;cursor:wait}.consultation-draft .photo-draft-note{padding:14px 0;font-size:13px}.consultation-draft #photo-download-status{font-size:12px;line-height:1.7;margin-top:14px!important}.consultation-draft .field-help{font-size:12px;padding-top:14px}
+@media(max-width:600px){.reference-photo-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Circular logo badge; preserve the complete illuminated mark inside the frame. */
+.nav-shop-logo{width:68px;height:68px;border-radius:50%;border:1px solid #35ead755;background:#080e0c;box-shadow:0 0 16px #35ead714}
+.nav-shop-logo img{width:117.65%;left:-8.82%;top:-5.88%}
+@media(max-width:1050px){.nav-shop-logo{width:48px;height:48px}}
