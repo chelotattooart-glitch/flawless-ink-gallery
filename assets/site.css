@@ -818,3 +818,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  footer{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
 }
 @media(prefers-reduced-motion:reduce){.nav.nav-enhanced>nav:not([hidden]){animation:none}.mobile-menu-toggle span{transition:none}}
+
+/* Larger phone navigation for clearer labels and easier tapping. */
+@media(max-width:600px){
+ .nav{grid-template-columns:minmax(0,1fr) 52px 56px;gap:10px;padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:14px}
+ .nav>.brand{font-size:14px;gap:4px;letter-spacing:.1em}
+ .nav>.brand span{font-size:10px;letter-spacing:.15em}
+ .nav>.nav-shop-logo{width:52px;height:52px}
+ .mobile-menu-toggle{width:56px;height:56px;gap:7px;padding:12px;border-radius:15px;border-color:#35ead77a;background:#35ead712}
+ .mobile-menu-toggle span{width:28px;height:3px}
+ .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+ .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+ .nav.nav-enhanced>nav{padding:14px;gap:7px;max-height:calc(100dvh - 116px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+ .nav.nav-enhanced>nav a,.nav.nav-enhanced>nav a:not(.book){font-size:18px;min-height:64px;padding:16px 18px}
+ .nav.nav-enhanced>nav a::after{font-size:20px}
+ html{scroll-padding-top:calc(104px + env(safe-area-inset-top,0px))}
+ .welcome-copy{padding-top:calc(130px + env(safe-area-inset-top,0px))}
+}
