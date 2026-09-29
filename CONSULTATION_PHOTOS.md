@@ -1,20 +1,18 @@
-# Gmail consultation handoff
+# Direct consultation form
 
-Completing the consultation opens Gmail with the studio recipient
-(`flawlessink112@gmail.com`), subject, and all consultation fields prefilled.
-The visitor reviews the draft and clicks Send in Gmail. The site does not send
-email itself and never claims inbox delivery or a confirmed appointment.
+The form sends JSON to FormSubmit's AJAX endpoint for flawlessink112@gmail.com.
+Clients stay on the page and do not need Gmail. FormSubmit processes the submitted
+contact details and tattoo request; the form discloses this before sending.
 
-Gmail normally opens in a separate tab. If the browser blocks that opening,
-the current tab navigates to Gmail instead. Form details are retained in the
-original page, and an explicit Gmail link is also available after submission.
+Owner setup: submit one clearly labeled test from the published website, then
+open the activation email in flawlessink112@gmail.com and confirm the form.
+Check spam if needed. Submit another test and verify actual inbox receipt.
+Do not treat publication or an API acknowledgement as verified email delivery.
 
-Reference links are included in the draft. Visitors attach photo files directly
-in Gmail; the website no longer displays a misleading photo upload control.
-There is no FormSubmit dependency, activation step, or provider CAPTCHA.
-The previous temporary text draft is recovered if available and then removed
-from session storage.
+Requests retain their entered details on failure and time out after 25 seconds.
+Repeat clicks are blocked while sending and after acceptance, until a field changes.
+Confirmation does not promise a booked appointment or verified inbox delivery.
+Reference links are supported; file attachments are not currently offered.
+Call, SMS, and direct email remain available below the form.
 
-Run `node --test tests/consultation.test.cjs`. Tests mock window navigation and
-verify validation, URL encoding, complete draft contents, and blocked-popup
-fallback. They do not send emails or access a Gmail account.
+Run node --test tests/consultation.test.cjs for mocked submission tests.
