@@ -744,3 +744,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .deal-payment-card dl{margin:0}.deal-payment-card dt{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0 6px}.deal-payment-card dd{margin:0;font-size:17px;overflow-wrap:anywhere}
 .deal-claim-actions{display:flex;flex-wrap:wrap;gap:12px}.deal-claim-actions a{margin-top:8px;font-size:12px;min-height:44px}.deal-claim-body #deal-claim-unavailable{color:#e8bd69}body.deal-dialog-open{overflow:hidden}
 @media(max-width:420px){.deal-claim-body{padding:20px}.deal-payment-card{padding:18px}}
+
+/* Original illuminated shop logo, framed to remove the surrounding wall. */
+.nav{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px;padding-top:10px;padding-bottom:10px}
+.nav>nav{justify-content:flex-end;gap:24px;min-width:0}
+.nav-shop-logo{position:relative;display:block;width:92px;height:68px;overflow:hidden;flex-shrink:0;border-radius:8px;background:#080e0c;outline-offset:4px}
+.nav-shop-logo img{position:absolute;display:block;width:129.4%;max-width:none;height:auto;left:-14.6%;top:-33.3%;object-fit:initial;padding:0}
+.nav-shop-logo:hover{box-shadow:0 0 18px #35ead733}
+@media(max-width:1050px){
+ .nav{grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:10px 20px}
+ .nav>.brand{grid-column:1;grid-row:1;min-height:44px;display:flex;align-items:center;gap:4px;font-size:11px;white-space:nowrap}
+ .nav-shop-logo{grid-column:2;grid-row:1;width:64px;height:48px}
+ .nav>nav{grid-column:1/-1;grid-row:2;width:100%;justify-content:space-between;gap:16px;overflow-x:auto}
+ .nav>nav a,.nav>nav a:not(.book){display:inline-flex;align-items:center;min-height:44px;flex-shrink:0;white-space:nowrap;font-size:10px;letter-spacing:.04em}
+ .nav>nav .book{padding:8px 10px}
+ html{scroll-padding-top:130px}section[id]{scroll-margin-top:130px}
+ .welcome-copy{padding-top:150px}
+}
+@media(max-width:420px){.nav{padding-inline:14px}.nav>nav{justify-content:flex-start;gap:14px}}
