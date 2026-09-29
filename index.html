@@ -11,7 +11,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/site.css?v=iphone-nav-1"/>
+<link rel="stylesheet" href="assets/site.css?v=artist-swipe-1"/>
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}.form-submit{display:none}</style></noscript>
 </head>
 <body>
@@ -60,7 +60,11 @@
 <h2>Meet the <em>Flawless team.</em></h2>
 <p>Every artist brings a different style and perspective. Swipe or scroll through the team and choose the artist that feels right for your next piece.</p>
 </div>
-<div aria-label="Flawless Ink artists" class="artist-strip">
+<div class="artist-browse-controls" id="artist-browse-controls" hidden>
+<div class="artist-swipe-heading"><p>Swipe to explore the artists <span class="artist-swipe-arrow" aria-hidden="true">↔</span></p><span id="artist-scroll-count">7 artists</span></div>
+<div class="artist-scroll-tools"><button id="artist-scroll-prev" type="button" aria-label="Scroll to previous artists" aria-controls="artist-strip">←</button><div class="artist-scroll-slider"><label class="sr-only" for="artist-scroll-position">Scroll through the artists</label><input id="artist-scroll-position" type="range" min="0" max="1000" step="1" value="0" aria-controls="artist-strip"/><span aria-hidden="true">Drag the bar or swipe the photos</span></div><button id="artist-scroll-next" type="button" aria-label="Scroll to next artists" aria-controls="artist-strip">→</button></div>
+</div>
+<div id="artist-strip" aria-label="Flawless Ink artists" class="artist-strip">
 <article class="artist-profile-card">
 <a aria-label="View Marcelo portfolio" class="artist-photo-link" data-open-portfolio="marcelo" href="#portfolio-marcelo">
 <div class="artist-photo-frame">
@@ -395,6 +399,7 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 </div>
 </dialog>
 <script src="assets/deals.js?v=claims-1" defer></script>
+<script src="assets/artist-navigation.js" defer></script>
 </body>
 </html>
 
