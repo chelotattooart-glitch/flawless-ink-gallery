@@ -103,15 +103,18 @@ consultationForm.addEventListener('submit', event => {
   document.getElementById('consultation-email-link').href = webUrl;
   document.getElementById('draft-details').value = body;
   document.getElementById('copy-status').textContent = '';
-  // Recovery options remain available, but there is no second confirmation step.
-  draftPanel.hidden = false;
+  // Keep the old recovery panel hidden and leave the shop at Home.
+  // This is a handoff, not confirmation that Gmail sent the message.
+  draftPanel.hidden = true;
+  window.history.replaceState(window.history.state, '', '#home');
+  window.scrollTo({top:0, left:0, behavior:'instant'});
   const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   if (ios) {
     window.location.href = 'googlegmail:///co?' + query;
   } else if (/Android/.test(navigator.userAgent)) {
     window.location.href = 'intent:flawlessink112@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '#Intent;scheme=mailto;package=com.google.android.gm;S.browser_fallback_url=' + encodeURIComponent(webUrl) + ';end';
   } else {
-    window.location.href = webUrl;
+    window.open(webUrl, '_blank', 'noopener,noreferrer');
   }
 });
 document.getElementById('copy-consultation').addEventListener('click', async () => {
