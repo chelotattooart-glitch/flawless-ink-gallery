@@ -145,11 +145,7 @@
 <p class="eyebrow">LET’S PLAN YOUR TATTOO</p>
 <h2 id="booking-title">Your idea.<br/><em>Our next conversation.</em></h2>
 <p>Tell us what you have in mind. Choose an artist or let us help you find the right fit.</p>
-<form id="consultation-form" class="consultation-form" action="https://formsubmit.co/flawlessink112@gmail.com" method="POST" enctype="multipart/form-data">
-<input type="hidden" name="_subject" value="Tattoo consultation">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="https://www.flawlessinkgallery.com/consultation-sent.html">
-<input type="hidden" name="_url" value="https://www.flawlessinkgallery.com/">
+<form id="consultation-form" class="consultation-form" action="#book" method="POST" onsubmit="event.preventDefault()">
 <div hidden aria-hidden="true"><label>Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"></label></div>
 <div class="form-grid">
 <div class="form-field"><label for="client-name">Your name <span>(required)</span></label><input id="client-name" name="name" autocomplete="name" maxlength="100" required></div>
@@ -159,18 +155,12 @@
 <div class="form-field"><label for="tattoo-placement">Placement <span>(required)</span></label><input id="tattoo-placement" name="placement" placeholder="e.g. forearm, shoulder" maxlength="100" required></div>
 <div class="form-field"><label for="tattoo-size">Approximate size <span>(required)</span></label><input id="tattoo-size" name="size" placeholder="e.g. 4 × 6 inches" maxlength="100" required></div>
 <div class="form-field full-width"><label for="tattoo-idea">Your tattoo idea <span>(required)</span></label><textarea id="tattoo-idea" name="idea" rows="4" placeholder="Subject, style, color or black & grey, and anything meaningful to you…" maxlength="1500" required></textarea></div>
-<div class="form-field full-width"><label for="tattoo-references">Reference link <span>(optional)</span></label><input id="tattoo-references" name="references" type="url" placeholder="https://…" maxlength="500" aria-describedby="reference-help"><p id="reference-help" class="field-help">You can add a link as well as reference photos below.</p></div>
+<div class="form-field full-width"><label for="tattoo-references">Reference link <span>(optional)</span></label><input id="tattoo-references" name="references" type="url" placeholder="https://…" maxlength="500" aria-describedby="reference-help"><p id="reference-help" class="field-help">Add a reference link here. Attach any reference photos directly in Gmail before sending.</p></div>
 </div>
-<div class="form-field reference-photos-field">
-<label for="reference-photos">Reference photos <span>(optional · select multiple)</span></label>
-<input id="reference-photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/heic,image/heif" multiple aria-describedby="reference-photo-help reference-photo-status">
-<p id="reference-photo-help" class="field-help">Add up to 6 photos: JPG, PNG, WebP, GIF, HEIC or HEIF. Up to 5 MB each, 10 MB total. Selected photos are sent with your consultation when you tap Submit.</p>
-<p id="reference-photo-status" class="field-help" role="status">No photos selected.</p>
-<ul id="reference-photo-list" class="reference-photo-list" aria-label="Selected reference photos"></ul>
-</div>
-<p id="booking-help" class="form-note">Submit sends your consultation and optional photos to flawlessink112@gmail.com. Complete any security check to finish sending; you’ll then return to a confirmation page. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
-<button class="cta form-submit" type="submit" aria-describedby="booking-help">Submit <span aria-hidden="true">↗</span></button>
+<p id="booking-help" class="form-note">Continue opens Gmail with your consultation details filled in. Review the email, attach any reference photos, and click Send in Gmail. The studio will contact you to confirm availability; this is not a confirmed booking.</p>
+<button class="cta form-submit" type="submit" aria-describedby="booking-help">Continue in Gmail <span aria-hidden="true">↗</span></button>
 <p id="consultation-status" class="form-note" role="status" aria-live="polite"></p>
+<a id="consultation-gmail-link" class="text-link" target="_blank" rel="noopener noreferrer" hidden>Open your consultation in Gmail ↗</a>
 <noscript><p>Please email your tattoo idea directly to <a href="mailto:flawlessink112@gmail.com">flawlessink112@gmail.com</a> or call the studio.</p></noscript>
 </form>
 
@@ -354,8 +344,7 @@ But tattooing for 15yrs and working with many talented artist I became versatile
 
 <script src="assets/site.js?v=native-consultation-2" defer></script>
 <script src="assets/mobile-navigation.js" defer></script>
-<script src="assets/consultation-references.js?v=direct-submit-1" defer></script>
-<script src="assets/consultation-submit.js?v=native-consultation-2" defer></script>
+<script src="assets/consultation-submit.js?v=gmail-consultation-3" defer></script>
 <script src="assets/marcelo-instagram.js" defer></script>
 
 <aside id="google-review-popup" class="google-review-popup" aria-labelledby="google-review-heading" hidden>
