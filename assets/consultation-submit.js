@@ -38,9 +38,11 @@
           _template: 'table', _honey: '', _url: window.location.href})
       });
       const result = await response.json();
-      if (!response.ok || !(result.success === true || result.success === 'true')) throw new Error('Submission not accepted');
-      if (/activat|confirm.*email/i.test(result.message || '')) {
+      const message = typeof result.message === 'string' ? result.message : typeof result.error === 'string' ? result.error : '';
+      if (/activat|confirm.*email/i.test(message)) {
         status.textContent = 'The studio’s consultation form still needs email activation. Please call or text the studio using the links below. Your details remain here.';
+      } else if (!response.ok || !(result.success === true || result.success === 'true')) {
+        status.textContent = 'The form service did not accept the request. ' + (message.slice(0,400) || 'Please call or text the studio below.') + ' Your details remain here.';
       } else {
         submitted = true;
         status.textContent = 'Your consultation was accepted for sending to the studio. This is not a confirmed appointment. The studio will contact you to confirm availability.';

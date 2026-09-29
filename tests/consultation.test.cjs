@@ -23,7 +23,7 @@ test('failure preserves entered details and enables retry',async()=>{
   assert.equal(f.fields.idea.value,'test');assert.equal(f.button.disabled,false);assert.match(f.status.textContent,/could not confirm/);
 });
 test('activation response is not shown as success',async()=>{
-  const f=setup(async()=>({ok:true,json:async()=>({success:true,message:'Please activate your form'})}));await f.submit();
+  const f=setup(async()=>({ok:true,json:async()=>({success:false,message:'Please activate your form'})}));await f.submit();
   assert.match(f.status.textContent,/needs email activation/);assert.equal(f.button.disabled,false);
 });
 test('honeypot blocks request',async()=>{
