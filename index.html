@@ -65,6 +65,16 @@
 
 <link rel="stylesheet" href="assets/site.css?v=description-contrast-1"/>
 <noscript><style>.reveal{opacity:1;transform:none;filter:none}.form-submit{display:none}</style></noscript>
+
+<style id="adrian-jmike-portrait-flip">
+/* Mirror only Adrian and Jmike; keep the existing portrait hover zoom. */
+.artist-photo-link[data-open-portfolio="adrian"] .artist-photo-frame img,
+.artist-photo-link[data-open-portfolio="jmike"] .artist-photo-frame img,
+#portfolio-adrian .artist-dialog-portrait,
+#portfolio-jmike .artist-dialog-portrait { transform: scaleX(-1); }
+.artist-profile-card:hover .artist-photo-link[data-open-portfolio="adrian"] .artist-photo-frame img,
+.artist-profile-card:hover .artist-photo-link[data-open-portfolio="jmike"] .artist-photo-frame img { transform: scale(-1.06, 1.06); }
+</style>
 </head>
 <body>
 <header class="nav">
