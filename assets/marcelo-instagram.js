@@ -47,7 +47,7 @@
       embed.dataset.instgrmVersion = '14';
       const caption = document.createElement('p');
       caption.className = 'instagram-caption';
-      caption.textContent = post.caption || 'A tattoo by @marcelo.tattooart';
+      caption.textContent = post.caption || 'A post by @marcelo.tattooart';
       embed.append(caption);
       const link = document.createElement('a');
       link.href = post.permalink;
@@ -65,7 +65,7 @@
     });
     visible += batch.length;
     more.hidden = visible >= posts.length;
-    status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' finished tattoo posts, newest first.';
+    status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' posts, newest first.';
     if (batch.length) processEmbeds();
   }
 
@@ -85,10 +85,9 @@
       if (data.account !== 'marcelo.tattooart' || !Array.isArray(data.posts)) throw new Error('Invalid feed');
       const seen = new Set();
       const nextPosts = data.posts.filter(post => {
-        if (!post || post.finished_tattoo !== true || typeof post.id !== 'string' || seen.has(post.id) ||
+        if (!post || typeof post.id !== 'string' || seen.has(post.id) ||
             !postUrl.test(post.permalink) || !Number.isFinite(Date.parse(post.published_at)) ||
-            (post.caption != null && typeof post.caption !== 'string') ||
-            !Number.isInteger(post.like_count) || post.like_count < 0) return false;
+            (post.caption != null && typeof post.caption !== 'string')) return false;
         seen.add(post.id);
         return true;
       }).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at) || a.id.localeCompare(b.id));
@@ -96,7 +95,7 @@
       loadedAt = Date.now();
       if (loaded && JSON.stringify(posts) === JSON.stringify(nextPosts)) {
         more.hidden = visible >= posts.length;
-        status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' finished tattoo posts, newest first.';
+        status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' posts, newest first.';
         return;
       }
       posts = nextPosts;
