@@ -3,7 +3,7 @@
   const popup = document.getElementById('google-review-popup');
   const launcher = document.getElementById('google-review-launcher');
   const close = document.getElementById('google-review-close');
-  const cards = Array.from(document.querySelectorAll('.google-review-card'));
+  let cards = Array.from(document.querySelectorAll('.google-review-card'));
   const position = document.getElementById('google-review-position');
   if (!popup || !launcher || !close || !cards.length) return;
   const key = 'flawless-google-reviews-seen';
@@ -36,6 +36,35 @@
     position.textContent = (current + 1) + ' of ' + cards.length;
   }
   launcher.hidden = false;
+  // Refresh the published review snapshot without reloading the visitor's page.
+  const refreshInterval = 60 * 60 * 1000;
+  let lastRefresh = Date.now();
+  let refreshing = false;
+  async function refreshReviews() {
+    if (refreshing) return;
+    refreshing = true;
+    try {
+      const response = await fetch('./index.html?reviews=' + Date.now(), { cache: 'no-store' });
+      if (!response.ok) throw new Error('Review refresh failed');
+      const page = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const updated = Array.from(page.querySelectorAll('#google-review-cards .google-review-card'));
+      if (updated.length < 5) throw new Error('Incomplete review snapshot');
+      document.getElementById('google-review-cards').replaceChildren(...updated);
+      cards = updated;
+      current = 0;
+      cards.forEach((card, index) => { card.hidden = index !== 0; });
+      position.textContent = '1 of ' + cards.length;
+      const note = page.querySelector('.google-review-note');
+      if (note) document.querySelector('.google-review-note').textContent = note.textContent;
+      lastRefresh = Date.now();
+    } catch {
+      // Keep the last complete set on network or publication failure.
+    } finally { refreshing = false; }
+  }
+  setInterval(refreshReviews, refreshInterval);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && Date.now() - lastRefresh >= refreshInterval) refreshReviews();
+  });
   launcher.addEventListener('click', () => open(true));
   close.addEventListener('click', dismiss);
   popup.addEventListener('keydown', event => {
