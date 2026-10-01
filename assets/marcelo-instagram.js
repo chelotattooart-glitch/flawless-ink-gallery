@@ -11,6 +11,8 @@
   let posts = [];
   let visible = 0;
   let loaded = false;
+  let loadedAt = 0;
+  const refreshMs = 60 * 60 * 1000;
   let loading = false;
   let embedScript;
 
@@ -63,15 +65,15 @@
     });
     visible += batch.length;
     more.hidden = visible >= posts.length;
-    status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' recent posts.';
+    status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' posts, most liked first.';
     if (batch.length) processEmbeds();
   }
 
   async function loadPosts() {
-    if (loading || loaded) return;
+    if (loading || (loaded && Date.now() - loadedAt < refreshMs)) return;
     loading = true;
     more.hidden = true;
-    status.textContent = 'Loading recent Instagram posts…';
+    status.textContent = 'Loading Instagram posts…';
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
     try {
@@ -82,19 +84,30 @@
       const data = await response.json();
       if (data.account !== 'marcelo.tattooart' || !Array.isArray(data.posts)) throw new Error('Invalid feed');
       const seen = new Set();
-      posts = data.posts.filter(post => {
+      const nextPosts = data.posts.filter(post => {
         if (!post || typeof post.id !== 'string' || seen.has(post.id) ||
             !postUrl.test(post.permalink) || !Number.isFinite(Date.parse(post.published_at)) ||
-            (post.caption != null && typeof post.caption !== 'string')) return false;
+            (post.caption != null && typeof post.caption !== 'string') ||
+            !Number.isInteger(post.like_count) || post.like_count < 0) return false;
         seen.add(post.id);
         return true;
-      }).sort((a, b) => Date.parse(b.published_at) - Date.parse(a.published_at)).slice(0, 9);
-      if (!posts.length) throw new Error('No valid posts');
+      }).sort((a, b) => b.like_count - a.like_count || Date.parse(b.published_at) - Date.parse(a.published_at) || a.id.localeCompare(b.id));
+      if (!nextPosts.length) throw new Error('No valid posts');
+      loadedAt = Date.now();
+      if (loaded && JSON.stringify(posts) === JSON.stringify(nextPosts)) {
+        more.hidden = visible >= posts.length;
+        status.textContent = 'Showing ' + visible + ' of ' + posts.length + ' posts, most liked first.';
+        return;
+      }
+      posts = nextPosts;
+      feed.replaceChildren();
+      visible = 0;
       loaded = true;
       more.textContent = 'Show more posts';
       showMore();
     } catch {
-      status.textContent = 'Recent posts could not load. Try again or visit Marcelo on Instagram.';
+      loaded = false;
+      status.textContent = 'Instagram posts could not load. Try again or visit Marcelo on Instagram.';
       more.textContent = 'Try again';
       more.hidden = false;
     } finally {
@@ -105,7 +118,8 @@
 
   more.addEventListener('click', () => loaded ? showMore() : loadPosts());
   new MutationObserver(() => {
-    if (portfolio.open) loadPosts();
+    setInterval(() => { if (portfolio.open) loadPosts(); }, refreshMs);
+  if (portfolio.open) loadPosts();
   }).observe(portfolio, {attributes: true, attributeFilter: ['open']});
   if (portfolio.open) loadPosts();
 })();
