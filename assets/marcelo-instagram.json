@@ -1,9 +1,17 @@
 {
   "account": "marcelo.tattooart",
-  "updated_at": "2026-10-07T23:05:37.794Z",
+  "updated_at": "2026-10-08T10:05:45.486Z",
   "ranking": "published_at_desc",
   "likes_metric": "media_like_count",
   "posts": [
+    {
+      "id": "18072272228762948",
+      "permalink": "https://www.instagram.com/reel/DeNkHxuMr2n/",
+      "caption": "Another leg sleeve in the making!\nThank you sammi!\nDm me for appointments @marcelo.tattooart\n#floral #floraltattoo #legtattoos #blackandgreytattoo",
+      "type": "VIDEO",
+      "published_at": "2026-10-07T23:46:34.000Z",
+      "like_count": 20
+    },
     {
       "id": "17909879274482655",
       "permalink": "https://www.instagram.com/reel/DeLWHPlxMEf/",
@@ -26,7 +34,7 @@
       "caption": "-Thank you for the trust @00___noe3 \n\nDm me for appointments @marcelo.tattooart \n\n#virginmary #virgenmaría #jesús #tattoo #forearmtattoo",
       "type": "VIDEO",
       "published_at": "2026-10-06T01:11:58.000Z",
-      "like_count": 29
+      "like_count": 30
     },
     {
       "id": "17998448649040020",
@@ -34,7 +42,7 @@
       "caption": "-First tattoo for the homie @mrmatthewchesney , we did a pin up girl using his wife as reference, quite the challenge and the results truly paid off. See you soon for more my man! 🔥\n \n#pinupgirl #blackandgrey #realism",
       "type": "VIDEO",
       "published_at": "2026-10-04T18:33:38.000Z",
-      "like_count": 27
+      "like_count": 29
     },
     {
       "id": "17985109431117195",
