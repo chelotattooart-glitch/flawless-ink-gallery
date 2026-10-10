@@ -1,16 +1,24 @@
 {
   "account": "marcelo.tattooart",
-  "updated_at": "2026-10-10T16:58:42.063Z",
+  "updated_at": "2026-10-10T23:57:10.719Z",
   "ranking": "published_at_desc",
   "likes_metric": "media_like_count",
   "posts": [
+    {
+      "id": "18097979267638360",
+      "permalink": "https://www.instagram.com/reel/DeU-4Xdhi86/",
+      "caption": "-👁️-\n\nWho’s next now? Available appointments for November 🔥\n\nCoral Springs 📍 \n\n@flawlessink_studio | @marcelo.tattooart",
+      "type": "VIDEO",
+      "published_at": "2026-10-10T20:54:27.000Z",
+      "like_count": 18
+    },
     {
       "id": "18086016335330357",
       "permalink": "https://www.instagram.com/reel/DeSqiUOp9PB/",
       "caption": "- I was able to snatch this awesome healed video of @maxwell_keating ‘s leg today, I can’t wait to keep working on it and show you guys the updates! \n\nCoral Springs 📍 @marcelo.tattooart \n\n#realism #anime #tattoo",
       "type": "VIDEO",
       "published_at": "2026-10-09T23:19:22.000Z",
-      "like_count": 44
+      "like_count": 50
     },
     {
       "id": "18072272228762948",
@@ -18,7 +26,7 @@
       "caption": "Another leg sleeve in the making!\nThank you sammi!\nCoral Springs📍\nDm me for appointments @marcelo.tattooart\n#floral #floraltattoo #legtattoos #blackandgreytattoo",
       "type": "VIDEO",
       "published_at": "2026-10-07T23:46:34.000Z",
-      "like_count": 26
+      "like_count": 27
     },
     {
       "id": "17909879274482655",
