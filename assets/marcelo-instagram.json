@@ -1,9 +1,17 @@
 {
   "account": "marcelo.tattooart",
-  "updated_at": "2026-10-09T18:04:34.279Z",
+  "updated_at": "2026-10-10T00:05:45.039Z",
   "ranking": "published_at_desc",
   "likes_metric": "media_like_count",
   "posts": [
+    {
+      "id": "18086016335330357",
+      "permalink": "https://www.instagram.com/reel/DeSqiUOp9PB/",
+      "caption": "- I was able to snatch this awesome healed video of @maxwell_keating ‘s leg today, I can’t wait to keep working on it and show you guys the updates! \n\nCoral Springs 📍 @marcelo.tattooart \n\n#realism #anime #tattoo",
+      "type": "VIDEO",
+      "published_at": "2026-10-09T23:19:22.000Z",
+      "like_count": 13
+    },
     {
       "id": "18072272228762948",
       "permalink": "https://www.instagram.com/reel/DeNkHxuMr2n/",
@@ -26,7 +34,7 @@
       "caption": "Saturation vs No saturation\n\nWhich one do you pick?\n\nCoral Springs📍",
       "type": "CAROUSEL_ALBUM",
       "published_at": "2026-10-06T12:48:52.000Z",
-      "like_count": 44
+      "like_count": 45
     },
     {
       "id": "17933375340142074",
