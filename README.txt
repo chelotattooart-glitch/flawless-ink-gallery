@@ -4,9 +4,9 @@ Artist order:
 1. Marcelo
 2. Adrian
 3. Jmike
-4. Sergio
-5. Sammi
-6. Kimmi
+4. Stephen
+5. Sergio
+6. Sammi
 7. TJ
 
 Marcelo keeps the existing photo and portfolio.
@@ -27,7 +27,7 @@ Artist layout update:
 - All 7 artists are now displayed side-by-side in one horizontal row.
 - Each artist has a dedicated portrait/photo area ABOVE their name.
 - Marcelo keeps the existing photo.
-- Adrian, Jmike, Sergio, Sammi, Kimmi and TJ have portrait placeholders ready
+- Adrian, Jmike, Stephen, Sergio, Sammi and TJ have portrait placeholders ready
   to be replaced by real photos later.
 - On phones, the artist row swipes horizontally.
 
@@ -41,7 +41,7 @@ Artist portrait update:
 Individual artist portfolios:
 - Clicking each artist's circular photo now jumps to that artist's portfolio.
 - Marcelo's existing tattoo gallery is now labeled as Marcelo's portfolio.
-- Adrian, Jmike, Sergio, Sammi, Kimmi and TJ each have their own portfolio section
+- Adrian, Jmike, Stephen, Sergio, Sammi and TJ each have their own portfolio section
   ready for photos later.
 
 
