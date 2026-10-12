@@ -40,10 +40,23 @@
       return;
     }
     try { sessionStorage.setItem(key, JSON.stringify({state: 'pending', values})); } catch {}
+    const next = form.elements.namedItem('_next');
+    if (next) {
+      const confirmationUrl = 'https://www.flawlessinkgallery.com/consultation-sent.html';
+      next.value = confirmationUrl;
+      try {
+        const token = crypto.randomUUID();
+        sessionStorage.setItem('flawless-ink-consultation-return', JSON.stringify({token, createdAt: Date.now()}));
+        next.value = confirmationUrl + '?submission=' + encodeURIComponent(token);
+      } catch {
+        // Submission still works when storage is blocked; omit measurement.
+      }
+    }
     status.textContent = 'Opening the secure submission page. Complete any verification there to finish sending your consultation.';
     button.disabled = true;
     button.textContent = 'Submitting…';
     // Native POST keeps the provider's spam verification and activation notices visible.
-    // Do not claim delivery from a redirect or a click.
+    // The provider's return confirms submission, not email delivery or a booking.
   });
 })();
+
