@@ -1,16 +1,24 @@
 {
   "account": "marcelo.tattooart",
-  "updated_at": "2026-10-13T19:06:13.635Z",
+  "updated_at": "2026-10-14T02:05:58.094Z",
   "ranking": "published_at_desc",
   "likes_metric": "media_like_count",
   "posts": [
+    {
+      "id": "18076866227734247",
+      "permalink": "https://www.instagram.com/reel/DedBAKSsMXY/",
+      "caption": "Ben’s project is coming to life!! This time we were able to finish the Spartan warrior shield and manage to do the outline for the next session! Thank you Ben for the trust! I’ll see you soon in November 🔥\n\n📍Coral Springs \n\n@marcelo.tattooart for appointments",
+      "type": "VIDEO",
+      "published_at": "2026-10-13T23:47:10.000Z",
+      "like_count": 15
+    },
     {
       "id": "18097979267638360",
       "permalink": "https://www.instagram.com/reel/DeU-4Xdhi86/",
       "caption": "-👁️-\n\nWho’s next now? Available appointments for November 🔥\n\nCoral Springs 📍 \n\n@flawlessink_studio | @marcelo.tattooart",
       "type": "VIDEO",
       "published_at": "2026-10-10T20:54:27.000Z",
-      "like_count": 27
+      "like_count": 28
     },
     {
       "id": "18086016335330357",
