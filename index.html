@@ -464,6 +464,59 @@ Best Artist And Has a Great Shop And I Would Recommend him every  time!!!</block
 </dialog>
 <script src="assets/deals.js?v=claims-1" defer></script>
 <script src="assets/artist-navigation.js" defer></script>
+
+<!-- October studio-agreed session offer -->
+<style id="session-offer-styles">
+.session-offer-bubble{position:fixed;right:20px;bottom:24px;z-index:26;border:1px solid #70f5df;border-radius:999px;padding:15px 20px;background:#35ead7;color:#05241f;box-shadow:0 8px 32px #0008;font:800 13px/1.4 Manrope,system-ui,sans-serif;cursor:pointer;min-height:48px}
+.session-offer-panel{position:fixed;inset:auto 20px 88px auto;margin:0;box-sizing:border-box;width:min(370px,calc(100vw - 32px));max-height:calc(100dvh - 180px);overflow:auto;padding:24px;border:1px solid #35ead770;border-radius:20px;background:#0b1412;color:#f4f6f3;box-shadow:0 20px 70px #000a;font:14px/1.6 Manrope,system-ui,sans-serif}
+.session-offer-panel .eyebrow{margin:0 45px 10px 0;font-size:10px}.session-offer-panel h2{font:600 32px/1.1 "Playfair Display",serif;margin:0 40px 16px 0}
+.session-offer-close{position:absolute;right:12px;top:12px;width:44px;height:44px;border:1px solid #ffffff30;border-radius:50%;background:transparent;color:#fff;font-size:24px;cursor:pointer}
+.session-offer-prices{display:grid;gap:10px;margin:18px 0}.session-offer-prices p{display:flex;justify-content:space-between;gap:12px;margin:0;padding:12px;background:#ffffff08;border-radius:10px}.session-offer-prices del{color:#b8c9c4;margin-right:8px}.session-offer-prices strong{color:#61efda;font-size:20px}.session-offer-terms{color:#e1eae6}.session-offer-expiry{font-size:12px;color:#b8c9c4}.session-offer-contact{display:block;text-align:center;padding:13px;border-radius:999px;background:#35ead7;color:#05241f;font-weight:800;text-decoration:none}
+.session-offer-bubble:focus-visible,.session-offer-close:focus-visible,.session-offer-contact:focus-visible{outline:3px solid #fff;outline-offset:3px}
+body.mobile-nav-open .session-offer-bubble{visibility:hidden}
+@media(max-width:650px){.session-offer-bubble{right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px))}.session-offer-panel{right:16px;bottom:calc(140px + env(safe-area-inset-bottom,0px));max-height:calc(100dvh - 230px);padding:20px}}
+</style>
+<button id="session-offer-bubble" class="session-offer-bubble" type="button" popovertarget="session-offer-panel" aria-controls="session-offer-panel" aria-expanded="false" hidden>Claim 50% off <span aria-hidden="true">↗</span></button>
+<section id="session-offer-panel" class="session-offer-panel" popover aria-labelledby="session-offer-title">
+<button class="session-offer-close" type="button" popovertarget="session-offer-panel" popovertargetaction="hide" aria-label="Close 50% off offer">×</button>
+<p class="eyebrow">YOUR NEXT SESSION · 50% OFF</p>
+<h2 id="session-offer-title">Make it your next piece.</h2>
+<div class="session-offer-prices">
+<p><span>Full-day session</span><span><del>$1,500</del><strong>$750</strong></span></p>
+<p><span>Half-day session</span><span><del>$900</del><strong>$450</strong></span></p>
+</div>
+<p class="session-offer-terms">50% off applies only to a full-day or half-day tattoo session arranged and confirmed directly with the shop. Contact Flawless Ink Gallery to agree on your session and confirm availability.</p>
+<p class="session-offer-expiry">Prices in USD. Offer valid through October 31, 2026, at 11:59 p.m. ET.</p>
+<a class="session-offer-contact" href="tel:+17543068422">Contact Shop Directly</a>
+</section>
+<script>
+(() => {
+  const bubble = document.getElementById('session-offer-bubble');
+  const panel = document.getElementById('session-offer-panel');
+  const expires = Date.parse('2026-11-01T00:00:00-04:00');
+  if (!('showPopover' in panel)) {
+    panel.hidden = true;
+    bubble.removeAttribute('popovertarget');
+    const close = () => { panel.hidden = true; bubble.setAttribute('aria-expanded', 'false'); };
+    bubble.addEventListener('click', () => { panel.hidden = !panel.hidden; bubble.setAttribute('aria-expanded', String(!panel.hidden)); });
+    panel.querySelector('.session-offer-close').addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); } });
+    document.addEventListener('click', e => { if (!panel.contains(e.target) && !bubble.contains(e.target)) close(); });
+  } else {
+    panel.addEventListener('toggle', e => bubble.setAttribute('aria-expanded', String(e.newState === 'open')));
+  }
+  function refresh() {
+    bubble.hidden = Date.now() >= expires;
+    if (bubble.hidden) {
+      if ('hidePopover' in panel) panel.hidePopover();
+      else panel.hidden = true;
+    }
+  }
+  refresh();
+  setInterval(refresh, 1000);
+})();
+</script>
+
 </body>
 </html>
 
