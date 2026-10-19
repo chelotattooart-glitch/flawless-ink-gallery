@@ -1,16 +1,24 @@
 {
   "account": "marcelo.tattooart",
-  "updated_at": "2026-10-19T04:05:12.680Z",
+  "updated_at": "2026-10-19T13:33:44.099Z",
   "ranking": "published_at_desc",
   "likes_metric": "media_like_count",
   "posts": [
+    {
+      "id": "18160280239504340",
+      "permalink": "https://www.instagram.com/reel/DerHmt8xjwn/",
+      "caption": "From ZERO to HERO🔥\n\nDm me directly to book, now booking November & December \n\n📍Coral Springs \n\n@marcelo.tattooart | @flawlessink_studio",
+      "type": "VIDEO",
+      "published_at": "2026-10-19T11:11:46.000Z",
+      "like_count": 16
+    },
     {
       "id": "17913007047551390",
       "permalink": "https://www.instagram.com/reel/Dep71APtMxV/",
       "caption": "2 out of 3 days done on this project for the homie Nick, super hype to get it finished 🤟\n\nBooking November 📍 Coral Springs \n\n@marcelo.tattooart | @flawlessink_studio",
       "type": "VIDEO",
       "published_at": "2026-10-19T00:09:47.000Z",
-      "like_count": 11
+      "like_count": 12
     },
     {
       "id": "18111623734896820",
